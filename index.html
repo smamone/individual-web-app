@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Suburb History Application</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <!--<link rel="stylesheet" type="text/css" href="css/normalize.css" /> <!-- SkeletonCSS -->
+        <!--<link rel="stylesheet" type="text/css" href="css/skeleton.css" /> <!-- SkeletonCSS -->
+    </head>
+
+    <body>
+        
+        <div id="suburb">
+        
+            <div class="image">
+                
+                <img />
+                
+            </div>
+            
+            <div class="right">
+            
+                <h3>You're currently in the suburb of</h3>
+                
+                <h1 id="location"><span class="fas fa-map-marker-alt"></span>&nbsp </h1>
+            
+<!--            <h3>State</h3>-->
+                <h2 id="state"></h2>
+
+<!--            <h3>District</h3>-->
+                <h2 id="district"></h2>
+
+<!--            <h3>Postcode</h3>-->
+                <h2 id="postcode"></h2>
+                
+            </div>
+        
+        </div> <!-- close SUBURB -->
+        
+        <div id="subMain">
+            
+            <table class="table">
+                
+                <tr class="picTableRow">
+                    <td class="fas fa-user"></td>
+                    <td class="fas fa-birthday-cake"></td>
+                    <td class="fas fa-users"></td>
+                </tr>
+                                
+                <tr class="headTableRow">
+                    <th>Namesake</th>
+                    <th>Founded</th>
+                    <th>Population</th>
+                </tr>
+                
+                <tr class="dataTableRow">
+                    <td id="namesake">namesake surname</td>
+                    <td id="founded">founded</td>
+                    <td id="population">population</td>
+                </tr>
+                
+            </table>
+            
+            <table class="table">
+                
+                <tr class="picTableRow">
+                    <td class="fas fa-map-signs"></td>
+                    <td class="fas fa-cloud-sun"></td>
+                    <td class="fas fa-map-marked-alt"></td>
+                </tr>
+                
+                <tr class="headTableRow">
+                    <th>Street Naming Theme</th>
+                    <th>Current temperature</th>
+                    <th>Map location</th>
+                </tr>
+                
+                <tr class="dataTableRow">
+                    <td id="streetNameTheme">street name theme</td>
+                    <td id="currentTemp"><span></span>&deg;C</td>
+                    <td id="mapLoc"><span></span></td>
+                </tr>
+                
+            </table>
+            
+        </div> <!-- close SUBMAIN -->
+        
+        <div id="subSec">
+            
+            <table id="subSecButton">
+            
+                <tr class="secTableRow">
+                    <th>Street Names</th>
+                    <th>Surrounding suburbs <span></span></th>
+                </tr>
+                
+            </table>
+            
+            <table id="subSecInfo" class="table">
+                
+                <tr class="secTableRow">
+                    <td id="streetNames">street names</td>
+                    <td id="surroundSubs">surrounding suburbs</td>
+                </tr>
+                
+            </table>
+        
+        </div> <!-- close SUBSEC -->
+
+        <!-- SCRIPTS -->
+        <script src="js/jquery-3.4.1.js"></script>
+        <!--<script src="js/moment-with-locales.js"></script>-->
+        <script src="js/scripts.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        
+    </body>
+
+</html>
