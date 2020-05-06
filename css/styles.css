@@ -15,7 +15,7 @@ body{
     padding: 0;
     margin: 0;
     min-height: 100vw;
-    background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+    background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);9
     background-repeat: no-repeat;
     background-size: cover;
     font-family: sans-serif;
@@ -26,11 +26,12 @@ h1{
 }
 
 h2{
-    padding: 0.5em;
+    padding: 0.35em;
 }
 
 h3{
-    padding: 0.7em;
+    padding: 0.7em 0.4em;
+    font-size: 1.2em;
 }
 
 h4{
@@ -51,12 +52,33 @@ h6{
     padding: 5em 0;
     margin: 0 auto;
     display: block;
+    border-bottom: 0.1em solid #F0F0F0;
+}
+
+#mainSec td{
+    text-align: left;    
+}
+
+.leftTd{
+    min-width: 6em;
 }
 
 #location{
     font-size: 3rem;
     padding: 0.5em 0.25em;
     vertical-align: top;
+}
+
+#suburb .right #mainSec h3{
+    color: #DDD;
+    font-size: 1.2em;
+    padding: 0.5em 0.4em;
+}
+
+#suburb .right #mainSec .h2Main{
+    color: #FFF;
+    font-size: 1.4em;
+    padding: 0.3em 0;
 }
 
 .left{
@@ -89,6 +111,74 @@ h6{
 }
 
 
+/** NAMESAKE INFO **/
+#namesakeSection{
+    width: 80vw;
+    min-height: 15em;
+    color: white;
+    padding: 3em 0;
+    margin: 0 auto;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#namesakeSection .image{
+    width: 20vw;
+    margin: 0 auto;
+    padding: 0 3em 0 2em;
+    float: left;
+    text-align: right;
+}
+
+#namesakeSection .image img{
+    width: 15em;
+    height: 15em;
+    border: 0.25em solid #FFF;
+    border-radius: 50%;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
+}
+
+#namesakeSection .right{
+    float: left;
+    width: 50vw;
+    margin: 0 auto;
+    padding-left: 1em;
+}
+
+#namesakeTable td{
+    text-align: left;    
+}
+
+.leftTd{
+    min-width: 6em;
+}
+
+#namesakeSection #namesakeTable th{
+    color: #FFF;
+    text-align: left;
+    font-size: 1.4em;
+    padding-bottom: 0.7em;
+}
+
+#namesakeSection #namesakeTable .fas{
+    font-size: 1.3em;
+}
+
+#namesakeSection #namesakeTable h3{
+    color: #DDD;
+    font-size: 1.2em;
+    padding: 0.5em 0;
+}
+
+#namesakeTable #namesakeTable .h2Ns{
+    color: #FFF;
+    font-size: 1.4em;
+    padding: 0.3em 0;
+}
+
+
 /** MAIN INFO **/
 #subMain{
     width: 80vw;
@@ -100,10 +190,11 @@ h6{
 #subMain .table{
     width: 100%;
     float: left;
+    background-color: rgba(224, 224, 224, 0.4);
     border-top: 0.1em solid #F0F0F0;
     border-bottom: 0.1em solid #F0F0F0;
     margin: 0 auto;
-    padding: 0.5em 0 2em;
+    padding: 0 0 2em;
     table-layout: fixed;
 }
 
@@ -121,6 +212,22 @@ th{
     font-size: 1em;
     text-transform: uppercase;
     padding: 1.5em 0;
+}
+
+#subMain .table .suburb{
+    background-color: rgba(224, 224, 224, 0.4);
+}
+
+#subMain .table .suburb th{
+    font-size: 1.2em;
+    border-bottom: 0.1em solid #DDD;
+}
+
+#subMain .suburb{
+    width: 100%;
+    min-height: 1.5em;
+    color: #FFF;
+    margin-bottom: 2em;
 }
 
 #subMain .fas{
@@ -166,23 +273,25 @@ th{
 #subSec #subSecButton{
     width: 100%;
 	min-height: 4.2em;
-    background-color: rgba(224, 224, 224, 0.4);
-    border-bottom: 0.1em solid #F0F0F0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 0.1em solid #F0F0F0
 	text-align: center;
 	position: relative;
 	display: inline-table;
     cursor: pointer;
 }
 
-#subSec #subSecButton tr{
+#subSec #subSecButton th{;
+    color: #FFF;
 }
 
 #subSec #subSecInfo{
     width: 100%;
     border-bottom: 0.1em solid #F0F0F0;
+    color: #FFF;
     margin: 0 auto;
     padding: 0.5em 0;
-    background-color: rgba(224, 224, 224, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 	display: none;
 	position: relative;
 }

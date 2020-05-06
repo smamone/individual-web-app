@@ -21,64 +21,160 @@
             </div>
             
             <div class="right">
-            
-                <h3>You're currently in the suburb of</h3>
                 
-                <h1 id="location"><span class="fas fa-map-marker-alt"></span>&nbsp </h1>
-            
-<!--            <h3>State</h3>-->
-                <h2 id="state"></h2>
+                <table id="mainSec" class="table">
+                    
+                    <tr>
+                        <h3>You're currently in the suburb of</h3>
+                    </tr>
+                
+                    <tr>
+                        <h1 id="location">
+                            <span class="fas fa-map-marker-alt"></span>&nbsp 
+                        </h1>
+                    </tr>
+                
+                    <tr>
+                        <td class="leftTd">
+                            <h3>District of</h3>
+                        </td>
+                        <td>
+                            <h2 id="district" class="h2Main"></h2>
+                        </td>
+                    </tr>
+          
+                    <tr>
+                        <td class="leftTd">
+                            <h3>Region of</h3>
+                        </td>
+                        <td>
+                            <h2 id="region" class="h2Main"></h2>
+                        </td>
+                    </tr>
 
-<!--            <h3>District</h3>-->
-                <h2 id="district"></h2>
-
-<!--            <h3>Postcode</h3>-->
-                <h2 id="postcode"></h2>
+                    <tr>
+                        <td class="leftTd">
+                            <h3>State of</h3>
+                        </td>
+                        <td>
+                            <h2 id="state" class="h2Main"></h2>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="leftTd">
+                            <h3>Postcode</h3>
+                        </td>
+                        <td>
+                            <h2 id="postcode" class="h2Main"></h2>
+                        </td>
+                    </tr>
+                    
+                </table>
                 
             </div>
         
         </div> <!-- close SUBURB -->
         
+        <div id="namesakeSection">
+        
+            <div class="image">
+                
+                <a href="">
+                    <img src="" />
+                </a>
+                
+            </div>
+            
+            <div class="right">
+                
+                <table id="namesakeTable" class="table">
+                    
+                    <tr>
+                        <th><span  class="fas fa-user"></span>&nbsp Namesake</th>
+                    </tr>
+                
+                    <tr>
+                        <td class="leftTd">
+                            <h3>Name</h3>
+                        </td>
+                        <td>
+                            <h2 id="nsName" class="h2Ns">*content*</h2>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="leftTd">
+                            <h3>Occupation</h3>
+                        </td>
+                        <td>
+                            <h2 id="nsOcc" class="h2Ns">*content*</h2>
+                        </td>
+                    </tr>
+          
+                    <tr>
+                        <td class="leftTd">
+                            <h3>Life</h3>
+                        </td>
+                        <td>
+                            <h2 id="nsLife" class="h2Ns">*content*</h2>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+            </div>
+            
+        </div> <!-- close NAMESAKE INFO -->
+        
         <div id="subMain">
             
             <table class="table">
                 
+                <tr class="suburb">
+                    <th colspan="3">Origins of <span></span></th>
+                </tr>
+                
                 <tr class="picTableRow">
-                    <td class="fas fa-user"></td>
                     <td class="fas fa-birthday-cake"></td>
-                    <td class="fas fa-users"></td>
+                    <td class="fas fa-user"></td>
+                    <td class="fas fa-map-signs"></td>
                 </tr>
                                 
                 <tr class="headTableRow">
-                    <th>Namesake</th>
-                    <th>Founded</th>
-                    <th>Population</th>
+                    <th>Established</th>
+                    <th>Other</th>
+                    <th>Street Naming Theme</th>
                 </tr>
                 
                 <tr class="dataTableRow">
-                    <td id="namesake">namesake surname</td>
-                    <td id="founded">founded</td>
-                    <td id="population">population</td>
+                    <td id="established">*content*</td>
+                    <td id="">*content*</td>
+                    <td id="streetNameTheme">*content*</td>
                 </tr>
                 
             </table>
             
             <table class="table">
                 
+                <tr class="suburb">
+                    <th colspan="3">Currently in <span></span></th>
+                </tr>
+                
                 <tr class="picTableRow">
-                    <td class="fas fa-map-signs"></td>
+                    <td class="fas fa-users"></td>
                     <td class="fas fa-cloud-sun"></td>
                     <td class="fas fa-map-marked-alt"></td>
                 </tr>
                 
                 <tr class="headTableRow">
-                    <th>Street Naming Theme</th>
+                    <th>Population</th>
                     <th>Current temperature</th>
                     <th>Map location</th>
                 </tr>
                 
                 <tr class="dataTableRow">
-                    <td id="streetNameTheme">street name theme</td>
+                    <td id="population"></td>
                     <td id="currentTemp"><span></span>&deg;C</td>
                     <td id="mapLoc"><span></span></td>
                 </tr>
@@ -89,7 +185,7 @@
         
         <div id="subSec">
             
-            <table id="subSecButton">
+            <table id="subSecButton" class="table">
             
                 <tr class="secTableRow">
                     <th>Street Names</th>
@@ -100,10 +196,10 @@
             
             <table id="subSecInfo" class="table">
                 
-                <tr class="secTableRow">
-                    <td id="streetNames">street names</td>
-                    <td id="surroundSubs">surrounding suburbs</td>
-                </tr>
+                <!--<tr class="secTableRow">
+                    <td class="streetNames">street names</td>
+                    <td class="surroundSubs"></td>
+                </tr>-->
                 
             </table>
         

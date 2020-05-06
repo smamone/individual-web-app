@@ -25,9 +25,6 @@ $(document).ready(function () {
             
             // call function to get weather data from Dark Sky API
             getWeatherData(newLocation);
-            
-            // call function to get suburb data from Wikipedia API
-            getSuburbData();
 
             // call function to get suburb data from TROVE API
 //            getTroveData();
@@ -134,6 +131,7 @@ function getLocationName(latLongCoords) {
         var locationComponent = locationData.results[0].components;
         var locSuburb = locationComponent.suburb;
         var locStateCode = locationComponent.state_code;
+        var locStateStr = locationComponent.state;
         var locState = locationComponent.state + " (" + locStateCode + ")";
         var locDistrict = locationComponent.county;
         var locPC = locationComponent.postcode;
@@ -141,8 +139,15 @@ function getLocationName(latLongCoords) {
         // append location to data to html
         $("#location").append(locSuburb);
         $("#state").append(locState);
-        $("#district").append(locDistrict);
+//        $("#district").append(locDistrict);
         $("#postcode").append(locPC);
+        $(".suburb span").append(locSuburb);
+        
+        // call function to get suburb data from Wikipedia API
+        getSuburbData(locSuburb, locStateStr, locPC);
+            
+        // call function to get suburb profile data from Domain API
+        getProfileData(locSuburb, locStateCode, locPC);
 
     }); // close getJSON
 
@@ -174,27 +179,129 @@ function getWeatherData(currentLocation) {
 
 
 // FUNCTION to load data from WIKIPEDIA API
-function getSuburbData(locSuburb, locStateCode) {
-
-    var wikiSearch = "http://en.wikipedia.org/w/api.php?action=query&list=search&srprop&srsearch=" + locSuburb + "," + locStateCode + "&prop=extracts&format=json" + "&origin=*";
-
-    // get Wikipedia search result page ID to get content
-    var wikiPageId = wikiSearch.query.search[0].pageid;
+function getSuburbData(locSuburb, locStateStr, locPC) {
     
-    console.log(wikiSearch);
+    console.log("in get suburb data");
+    console.log(locSuburb + " " + locStateStr + " " + locPC);
 
-    // make request to server using WIKI API call
-    $.getJSON(wikiSearch, function (data) {
+    var wikiSearch = "http://en.wikipedia.org/w/api.php?action=query&list=search&srprop&srsearch=" + locSuburb + "," + locStateStr + "," + locPC + "&prop=extracts&format=json" + "&origin=*";
+    
+//    console.log(wikiSearch);
 
-        console.log("get data in");
-        console.log(data);
+    // make request to server using Wikipedia API call
+    $.getJSON(wikiSearch, function (wikiData) {
 
-        // parse Wikipedia content into html
-    //        $("#location span").html(data.parse.title);
+        console.log("loading wikipedia data");
+        console.log(wikiData);
+        
+        // create variable to hold suburb info
+        // this is the first result in the array
+        var suburb = wikiData.query.search[0];
+
+        // get Wikipedia search result page ID and title to get content
+        var wikiPageId = suburb.pageid;
+        var wikiPageTitle = suburb.title;
+//        var wikiPageContent = "http://en.wikipedia.org/w/api.php?action=parse&prop=text&page=" + wikiPageTitle + "&format=json" + "&origin=*";
+        
+//        var wikiIntro = "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" + wikiPageTitle + "&format=json" + "&origin=*";
+        
+        var wikiIntro = "http://en.wikipedia.org/w/api.php?action=parse&pageid=" + wikiPageId + "&format=json" + "&origin=*";
+        
+        console.log(wikiIntro);
+        
+        var wikiInfoBox = "https://en.wikipedia.org/w/api.php?action=parse&pageid=" + wikiPageId + "&section=0&prop=wikitext&format=json" + "&origin=*";
+        
+        console.log(wikiInfoBox);
+        
+        $.getJSON(wikiIntro, function (wikiSuburb) {
+            
+            console.log(wikiSuburb);
+            
+            // get Wikipedia suburb page image            
+            var wikiPageImage = "http://en.wikipedia.org/w/api.php?action=query&pageids=" + wikiPageId + "&prop=pageprops&format=json" + "&origin=*";
+            
+            $.getJSON(wikiPageImage, function (wikiSuburbImage) {
+                
+                console.log(wikiSuburbImage);
+
+                var wikiImage = wikiSuburbImage.query.pages + "." + wikiPageId + "." + pageprops.page_image_free;
+
+                console.log(wikiImage);
+
+                // append image to html
+                $("#suburb .image img").append("src", wikiImage);
+            
+            }); // close getJSON
+            
+        }); // close getJSON
 
     }); // close getJSON
 
 } // close getSuburbData function
+
+
+// FUNCTION to load data from Domain API
+function getProfileData(locSuburb, locStateCode, locPC) {
+    
+    console.log("in get profile data");
+
+    // my Domain API key
+    var keyDomain = "key_845f270a8ad388a68456361972c842bf";
+
+    // Domain API call
+    var domainSearch = "https://api.domain.com.au/v1/addressLocators?searchLevel=Suburb&suburb=" + locSuburb + "&state=" + locStateCode + "&postcode=" + locPC + "&api_key=" + keyDomain;
+    
+//    console.log(domainSearch);
+    
+    // make request to server using Dark Sky API call
+    $.getJSON(domainSearch, function (domainData) {
+        
+        console.log("loading domain data");
+//        console.log(domainData);
+    
+        var suburbId = domainData[0].ids[0].id;
+
+//        console.log(suburbId);
+            
+        var urlDomain = "https://api.domain.com.au/v1/locations/profiles/" + suburbId + "?api_key=" + keyDomain;
+        
+        $.getJSON(urlDomain, function (domainData) {
+            
+//            console.log(domainData);
+
+            var districtData = domainData.areaName;
+            var regionData = domainData.regionName;
+            var popData = domainData.data.population;
+            
+            // loop through the data and add it to the ul
+            // new li for each new item
+            for (var i = 0; i < domainData.surroundingSuburbs.length; i++) {
+
+                // the data for one suburb
+                var surroundSubs = domainData.surroundingSuburbs[i];
+
+                // create new li for each suburb
+                var listTr = $("<tr class='secTableRow'>");
+
+                // to add to each list item
+                var listTd = $("<td class='surroundSubs'></td>");
+                
+                $("#subSecInfo").append(listTr);
+                listTr.append(listTd);
+                listTd.append(surroundSubs.name);
+
+            } // close for loop
+
+            // append data to html
+            $("#district").append(districtData);
+            $("#region").html(regionData);
+            $("#population").html(popData);
+            
+        }); // close getJSON
+        
+    }); // close getJSON
+
+} // close getProfileData function
 
 
 // FUNCTION to load data from TROVE API
