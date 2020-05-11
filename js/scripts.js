@@ -334,7 +334,7 @@ function getPlaceData(locSuburb){
 // FUNCTION to load namesake image from WIKIPEDIA API
 function getNamesakeImage(namesake) {
 
-    var wikiNamesakeSearch = "http://en.wikipedia.org/w/api.php?action=query&list=search&srprop&srsearch=" + namesake + "&prop=extracts&format=json" + "&origin=*";
+    var wikiNamesakeSearch = "https://en.wikipedia.org/w/api.php?action=query&list=search&srprop&srsearch=" + namesake + "&prop=extracts&format=json" + "&origin=*";
 
     // make request to server using Wikipedia API call
     $.getJSON(wikiNamesakeSearch, function (wikiData) {
@@ -352,7 +352,7 @@ function getNamesakeImage(namesake) {
 //        console.log(wikiPageId);
 //        console.log(wikiPageTitle);
         
-        var wikiIntro = "http://en.wikipedia.org/w/api.php?action=parse&pageid=" + wikiPageId + "&format=json" + "&origin=*";
+        var wikiIntro = "https://en.wikipedia.org/w/api.php?action=parse&pageid=" + wikiPageId + "&format=json" + "&origin=*";
         
         // make request to server using Wikipedia API call
         $.getJSON(wikiIntro, function (wikiSuburb) {
@@ -383,7 +383,7 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
     console.log("in get suburb data");
     console.log(locSuburb + " " + locState + " " + locPC);
 
-    var wikiSearch = "http://en.wikipedia.org/w/api.php?action=query&list=search&srprop&srsearch=" + locSuburb + "," + locState + "," + locPC + "&prop=extracts&format=json" + "&origin=*";
+    var wikiSearch = "https://en.wikipedia.org/w/api.php?action=query&list=search&srprop&srsearch=" + locSuburb + "," + locState + "," + locPC + "&prop=extracts&format=json" + "&origin=*";
     
 //    console.log(wikiSearch);
 
@@ -401,7 +401,7 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
         var wikiPageId = suburb.pageid;
         var wikiPageTitle = suburb.title;
         
-        var wikiIntro = "http://en.wikipedia.org/w/api.php?action=parse&pageid=" + wikiPageId + "&format=json" + "&origin=*";
+        var wikiIntro = "https://en.wikipedia.org/w/api.php?action=parse&pageid=" + wikiPageId + "&format=json" + "&origin=*";
         
         var wikiInfoBox = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" + wikiPageTitle + "&origin=*";
         
