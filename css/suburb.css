@@ -12,15 +12,16 @@ html{
 }
 
 body{
-    width: 99vw;
+    width: 100vw;
     padding: 0;
     margin: 0;
     min-height: 100vw;
-    background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+/*    background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);*/
+    background-image: url("../images/suburb.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .container{
@@ -56,11 +57,21 @@ img{
     object-position: center;
 }
 
+.lora{
+    font-family: 'Lora', serif;
+    font-size: 
+}
+
+.raleway{
+    font-family: 'Raleway', sans-serif;
+    font-weight: normal;
+}
+
 
 /** HEADER **/
 #header{
     width: 100%;
-    min-height: 5em;
+    min-height: 5.5em;
     background-color: #00406C;
     text-align: center;
     border-bottom: 0.1em solid #F0F0F0;
@@ -68,13 +79,23 @@ img{
 
 #header #title{
     font-size: 0.9em;
-    color: #FFF;
+/*    color: #FFF;*/
     width: 75%;
     float: left;
 }
 
 #header #title h1{
     margin-left: 30%;
+    background-color: #FFF;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(0,0,0,0.2) 0px 3px 3px;
+}
+
+#header #title sup{
+    font-size: large;
 }
 
 #header #home{
@@ -95,13 +116,12 @@ img{
     color: #FFF;
 }
 
-
 /** SUBURB DATA **/
 #suburb{
     width: 100%;
     min-height: 20em;
     color: white;
-    padding: 5em 0;
+    padding: 4.5em 0 5em;
     margin: 0 auto;
     display: block;
     border-bottom: 0.1em solid #F0F0F0;
@@ -117,12 +137,18 @@ img{
 
 #location{
     font-size: 3rem;
+    font-weight: bold;
     padding: 0.5em 0.25em;
     vertical-align: top;
+    color: #0097FE;
 }
 
 #suburb .right h3{
     color: #00406C;
+}
+
+#suburb .right #mainSec #current{
+    font-size: 1.3em;
 }
 
 #suburb .right #mainSec h3{
@@ -132,7 +158,7 @@ img{
 }
 
 #suburb .right #mainSec .h2Main{
-    color: #FFF;
+    color: #0097FE;
     font-size: 1.4em;
     padding: 0.3em 0;
 }
@@ -144,16 +170,10 @@ img{
     padding-right: 1em;
 }
 
-#suburb .right{
-    float: right;
-    width: 50vw;
-    margin: 0 auto;
-    padding-left: 1em;
-}
-
 #suburb .image{
     width: 25vw;
     margin: 0 auto;
+    padding: 0 2em;
     float: left;
     text-align: right;
 }
@@ -161,8 +181,14 @@ img{
 #suburb .image img{
     width: 20em;
     height: 20em;
-    border: 0.25em solid #FFF;
+    border: 0.35em solid #00406C;
     border-radius: 50%;
+    margin: 0 auto;
+}
+
+#suburb .right{
+    float: right;
+    width: 50vw;
     margin: 0 auto;
 }
 
@@ -182,7 +208,7 @@ img{
 #namesakeSection .image{
     width: 20vw;
     margin: 0 auto;
-    padding: 0 3em;
+    padding: 0 3.5em;
     float: left;
     text-align: right;
 }
@@ -227,7 +253,6 @@ img{
     min-width: 8em;
 }
 
-
 #namesakeSection #namesakeTable td .h2Ns{
     color: #FFF;
     padding: 0.3em 0 0.7em;
@@ -253,7 +278,7 @@ img{
 #subMain .table{
     width: 100%;
     float: left;
-    background-color: rgba(224, 224, 224, 0.4);
+    background-color: rgba(224, 224, 224, 0.9);
     border-top: 0.1em solid #F0F0F0;
     border-bottom: 0.1em solid #F0F0F0;
     margin: 0 auto;
@@ -278,12 +303,13 @@ th{
 }
 
 #subMain .table .suburb{
-    background-color: rgba(224, 224, 224, 0.4);
+    background-color: rgba(0, 151, 254, 0.3);
 }
 
 #subMain .table .suburb th{
     font-size: 1.2em;
     border-bottom: 0.1em solid #DDD;
+    color: #00406C;
 }
 
 #subMain .suburb{
@@ -299,6 +325,10 @@ th{
     margin: 0 auto;
     padding-bottom: 0;
     display: table-cell;
+}
+
+#subMain .table #summary{
+    padding: 2em 2em 0;
 }
 
 #subMain .table .picTableRow td{
@@ -354,7 +384,7 @@ th{
     color: #FFF;
     margin: 0 auto;
     padding: 0.5em 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7);
 	display: none;
 	position: relative;
 }

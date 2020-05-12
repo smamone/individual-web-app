@@ -232,6 +232,9 @@ function getLocationName(latLongCoords) {
     
         // call function to get place data from ACTmapi API
         getPlaceData(locSuburb);
+            
+        // call function from Google API
+        getGoogleData(locSuburb, locState, locPC);
 
     }); // close getJSON
 
@@ -292,7 +295,7 @@ function getPlaceData(locSuburb){
     
     $.getJSON(placeNames, function (data) {
         
-//        console.log(data);
+        console.log(data);
         
         var placeString = data.results[1].attributes.DESCRIPTION;
         
@@ -302,6 +305,7 @@ function getPlaceData(locSuburb){
         var surname = placeData[0].replace("Feature Name: ","");
         var givenNames = placeData[2].replace("Given Names: ","");
         var namesake = givenNames + " " + surname;
+        var title = placeData[3].replace("Title: ","");
         var birth = placeData[4].replace("Birth Year: ","");
         var death = placeData[5].replace("Death Year: ","");
         var bioString = placeData[7].replace("Biography: ","");
@@ -310,16 +314,17 @@ function getPlaceData(locSuburb){
         var bio = bioString.split("; ");
         
         // for loop to replace each instance of string to format on new line
-        for (var i = 0; i < bio.length; i++){
-            
-            bio[i] + ".<br>";
-            
-        };
+//        for (var i = 0; i < bio.length; i++){
+//                
+//                $(bio).append(".<br />");
+//            
+//        };
         
         console.log(bio);
         
 //        console.log(placeData);
         $("#nsName").html(namesake);
+        $("#nsTitle").html(title);
         $("#nsBio").html(bio);
         $("#nsLife").html(birth + "-" + death);
         
@@ -339,7 +344,7 @@ function getNamesakeImage(namesake) {
     // make request to server using Wikipedia API call
     $.getJSON(wikiNamesakeSearch, function (wikiData) {
         
-        console.log(wikiData);
+//        console.log(wikiData);
         
         // create variable to hold namesake info
         // this is the first result in the array
@@ -377,6 +382,25 @@ function getNamesakeImage(namesake) {
 } // close getSuburbData function
 
 
+// FUNCTION to load data from Google Search API
+function getGoogleData(locSuburb, locState, locPC){
+    
+    var keyGoogle = "AIzaSyCCy1xoop4IL-HQxJPMjuzMYt9Xf7SUg1E";  
+    var searchId = "008379666768099928482:0rfqenjzl81";
+    var urlGoogle = "https://www.googleapis.com/customsearch/v1?key=" + keyGoogle + "&cx=" + searchId + "&q=" + locSuburb + ",_" + locState + "%20" + locPC;
+    
+    console.log(urlGoogle);
+    
+    // make request to server using Google API call
+    $.getJSON(urlGoogle, function (data) {
+     
+        console.log(data);
+        
+    }); // close getJSON
+    
+} // close getGoogleData function
+
+
 // FUNCTION to load data from WIKIPEDIA API
 function getSuburbData(locSuburb, locState, locPC, namesake) {
     
@@ -401,19 +425,20 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
         var wikiPageId = suburb.pageid;
         var wikiPageTitle = suburb.title;
         
-        var wikiIntro = "https://en.wikipedia.org/w/api.php?action=parse&pageid=" + wikiPageId + "&format=json" + "&origin=*";
+        var wikiPage = "https://en.wikipedia.org/w/api.php?action=parse&pageid=" + wikiPageId + "&format=json" + "&origin=*";
         
-        var wikiInfoBox = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" + wikiPageTitle + "&origin=*";
+        var wikiPageIntro = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" + wikiPageTitle + "&origin=*";
         
-        var wikiCanSubs = "https://en.wikipedia.org/w/api.php?action=parse&pageid=2524652&format=json&origin=*";
-        
-        $.getJSON(wikiInfoBox, function (wikiIntroPage) {
+        $.getJSON(wikiPageIntro, function (wikiIntro) {
             
-            console.log(wikiIntroPage);
+            console.log(wikiIntro);
+           
+            // add summary to html
+            $("#summary").html(wikiIntro.query.pages[wikiPageId].extract);
             
         });
         
-        $.getJSON(wikiIntro, function (wikiSuburb) {
+        $.getJSON(wikiPage, function (wikiSuburb) {
             
 //            console.log(wikiSuburb);
             

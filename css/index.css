@@ -12,7 +12,7 @@ html{
 }
 
 body{
-    width: 99vw;
+    width: 100vw;
     padding: 0;
     margin: 0;
     min-height: 100vw;
@@ -20,7 +20,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .container{
@@ -59,6 +59,16 @@ img{
     object-position: center;
 }
 
+.lora{
+    font-family: 'Lora', serif;
+    font-size: 
+}
+
+.raleway{
+    font-family: 'Raleway', sans-serif;
+    font-weight: normal;
+}
+
 
 /** TITLE **/
 #title{
@@ -66,19 +76,31 @@ img{
     min-height: 20em;
     color: #333;
     text-align: center;
-    padding: 5em 0;
-    background-color: rgba(224, 224, 224, 0.9);
+    padding: 4em 0 5em;
+    background-color: rgba(224, 224, 224, 0.5);
+    border: 0.1em solid #FFF;
     border-radius: 2em;
-    margin: auto;
-    top: 47%;
+    margin: 12vw auto 0;
     left: 50%;
 }
 
 #title h1{
-    color: #4481eb;
+    font-size: 3em;
+    background-color: #4481eb;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.4) 0px 3px 3px;
+}
+
+#title sup{
+    vertical-align: text-top;
+    font-size: x-large;
 }
 
 #title h3{
+    font-style: italic;
 }
 
 #box{
@@ -93,7 +115,7 @@ img{
     margin: 2em auto;
     padding: 2em 0;
     border: 0.1em solid #FFF;
-    background-color: rgba(224, 224, 224, 0.9);
+    background-color: rgba(224, 224, 224, 0.8);
 }
 
 #currentLoc a{
@@ -107,7 +129,7 @@ img{
     margin: 2em auto;
     padding: 2em 0;
     border: 0.1em solid #FFF;
-    background-color: rgba(224, 224, 224, 0.9);
+    background-color: rgba(224, 224, 224, 0.8);
 }
 
 #form h3{
