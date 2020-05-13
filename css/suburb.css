@@ -98,12 +98,22 @@ img{
     font-size: large;
 }
 
+#header #title .fas{
+    font-size: 0.9em;
+}
+
 #header #home{
     float: right;
     width: 25%;
-    font-size: 2.5em;
+    font-size: 2.1em;
     color: #0097FE;
-    padding: 0.45em 0;
+    padding: 0.7em 0;
+    background-color: #0097FE;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(0,0,0,0.2) 0px 3px 3px;
 }
 
 #header #home a{
@@ -272,7 +282,7 @@ img{
     width: 100%;
     min-height: 20em;
     margin: 0 auto;
-    padding-bottom: 1em;
+    overflow-x: auto;
 }
 
 #subMain .table{
@@ -319,6 +329,10 @@ th{
     margin-bottom: 2em;
 }
 
+#subMain .table .suburb th{
+    column-span: all;
+}
+
 #subMain .fas{
     font-size: 2em;
     color: #333;
@@ -351,14 +365,10 @@ th{
     color: #333;
 }
 
-#subMain #namesake{
-    text-transform: capitalize;
-}
 
 /** SECONDARY INFO **/
 #subSec{
     width: 100%;
-    min-height: 10em;
     margin: 0 auto;
     padding-top: 0;
 }
@@ -393,51 +403,109 @@ th{
     padding: 1em;
 }
 
+#imageref{
+    font-size: 0.9em;
+    text-align: right;
+    color: #FFF;
+    padding: 1em 0;
+}
+
+#imageref a{
+    color: #FFF;
+}
+
 
 /** CSS RESPONSIVE SETTINGS **/
-@media screen and (min-width: 876px) and (max-width: 900px){
+@media screen and (min-width: 1401px){
+    
+    .container{
+        width: 90vw;
+        text-align: center;
+    }
+    
+    #suburb .image{
+        width: 30vw;
+    }
+    
+    #suburb .right{
+        float: left;
+    }
+    
+    #current, #location, #leftH3{
+        text-align: left;
+    }
+    
+    #subMain .table #summary{
+        column-count: 2;
+    }
+    
+    #namesakeSection{
+        width: 100%;
+    }
     
 }
 
-@media screen and (min-width: 741px) and (max-width: 875px){
+@media screen and (min-width: 1001px) and (max-width: 1400px){
+    
+    .container{
+        width: 90vw;
+        text-align: center;
+    }
+    
+    #suburb .image{
+        width: 30vw;
+    }
+    
+    #suburb .right{
+        float: left;
+    }
+    
+    #current, #location, #leftH3{
+        text-align: left;
+    }
+    
+    #namesakeSection{
+        width: 100%;
+    }
     
 }
 
-@media screen and (min-width: 706px) and (max-width: 740px){
-    
-}
-
-@media screen and (min-width: 551px) and (max-width: 705px){
-    
-}
-
-@media screen and (min-width: 550px){
+@media screen and (max-width: 1000px){
     
     /** HEADER **/
-/*
-    #header #title{
-        font-size: 0.8em;
+    #header{
+        min-height: 6em;
     }
-*/
+    
+    #header #title{
+        font-size: 1em;
+    }
 
-/*
     #header #title h1{
         margin-left: 10%;
     }
     
-    * SUBURB DATA *
+    .container{
+        width: 100%;
+        text-align: center;
+    }
+    
+    /** SUBURB DATA **/
     #suburb{
         min-height: 50em;
         padding: 3em 0;
+    }
+    
+    #mainSec{
+        width: 100%;
     }
 
     #mainSec td{
         text-align: center;
         width: 100%;
+        float: left;
     }
-*/
 
-/*
     .leftTd{
         min-width: 6em;
     }
@@ -447,19 +515,17 @@ th{
         padding: 0.5em 0.25em;
         vertical-align: top;
     }
-
+    
     #suburb .right h3{
         color: #00406C;
     }
 
     #suburb .right #mainSec h3{
-        color: #00406C;
-        font-size: 1.2em;
-        padding: 0.5em 0.4em;
+        padding: 1em 0 0.3em;
     }
 
     #suburb .right #mainSec .h2Main{
-        color: #FFF;
+        color: #0097FE;
         font-size: 1.4em;
         padding: 0.3em 0;
     }
@@ -473,7 +539,7 @@ th{
 
     #suburb .right{
         float: none;
-        width: 100;
+        width: 100%;
         text-align: center;
     }
 
@@ -483,6 +549,187 @@ th{
         text-align: center;
         padding-bottom: 2em;
     }
-*/
+
+
+    /** NAMESAKE INFO **/
+    #namesakeSection{
+        width: 100%;
+        float: none;
+    }
+
+    #namesakeSection .image{
+        width: 84%;
+        padding-bottom: 2em;
+        text-align: center;
+    }
+
+    #namesakeSection .right{
+        float: none;
+        width: 90%;
+        padding-left: 0;
+    }
+
+    #namesakeSection .right #leftH3{
+        text-align: center;
+        padding: 1em 0;
+    }
+    
+    #namesakeSection #namesakeTable{
+        width: 100%;
+    }
+    
+    #namesakeSection #namesakeTable tr{
+        width: 100%;
+        float: left;
+    }
+
+    #namesakeSection #namesakeTable td{
+        text-align: center;
+        width: 100%;
+        float: left;
+    }
+
+    #namesakeSection #namesakeTable .leftTd{
+        width: 100%;
+        float: left;
+    }
+
+    #namesakeSection #namesakeTable td .h2Ns{
+        width: 100%;
+    }
+
+    #namesakeSection #namesakeTable p{
+        padding: 0.5em 0;
+    }
+
+    #namesakeSection #namesakeTable #nsName{
+        text-transform: capitalize;
+    }
+
+
+    /** MAIN INFO **/
+    #subMain{
+        width: 100%;
+        min-height: 20em;
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+
+    #subMain .table{
+        width: 100%;
+        float: left;
+        background-color: rgba(224, 224, 224, 0.9);
+        border-top: 0.1em solid #F0F0F0;
+        border-bottom: 0.1em solid #F0F0F0;
+        margin: 0 auto;
+        padding: 0 0 2em;
+        table-layout: fixed;
+    }
+
+    #subMain .table:nth-child(1), #subMain .table:nth-child(2){
+        border-bottom: none;
+    }
+
+    th, tr, td{
+        text-align: center;
+        height: auto;
+    }
+
+    th{
+        color: #333;
+        font-size: 1em;
+        text-transform: uppercase;
+        padding: 1.5em 0;
+    }
+
+    #subMain .table .suburb{
+        background-color: rgba(0, 151, 254, 0.3);
+    }
+
+    #subMain .table .suburb th{
+        font-size: 1.2em;
+        border-bottom: 0.1em solid #DDD;
+        color: #00406C;
+    }
+
+    #subMain .suburb{
+        width: 100%;
+        min-height: 1.5em;
+        color: #FFF;
+        margin-bottom: 2em;
+    }
+
+    #subMain .fas{
+        font-size: 2em;
+        color: #333;
+        margin: 0 auto;
+        padding-bottom: 0;
+        display: table-cell;
+    }
+
+    #subMain .table #summary{
+        padding: 2em 2em 0;
+    }
+
+    #subMain .table .picTableRow td{
+        width: 1em;
+        height: 1em;
+        padding: 0.8em 0.5em 0;
+    }
+
+    #subMain .table .headTableRow{
+        padding: 1.5em 1.5em 0;
+    }
+
+    #subMain .table .headTableRow th{
+        padding-top: 0.75em;
+    }
+
+    #subMain .table .dataTableRow{
+        padding: 1.5em 1.5em 0;
+        font-size: 1.3em;
+        color: #333;
+    }
+
+
+    /** SECONDARY INFO **/
+    #subSec{
+        min-height: auto;
+    }
+
+    #subSec #subSecButton{
+        width: 100%;
+        min-height: 4.2em;
+        background-color: #00406C;
+        border-bottom: 0.1em solid #F0F0F0;
+        text-align: center;
+        position: relative;
+        display: inline-table;
+        cursor: pointer;
+    }
+
+    #subSec #subSecButton th{;
+        color: #FFF;
+    }
+
+    #subSec #subSecInfo{
+        width: 100%;
+        border-bottom: 0.1em solid #F0F0F0;
+        color: #FFF;
+        margin: 0 auto;
+        padding: 0.5em 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none;
+        position: relative;
+    }
+
+    #subSec #subSecInfo td{
+        padding: 1em;
+    }
+    
+    #imageref{
+        text-align: center;
+        padding: 0.5em 0;
+    }
     
 }

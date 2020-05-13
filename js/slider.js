@@ -11,10 +11,10 @@ function subSecSlide(event) {
     $("#subSecInfo").slideToggle("slow", function(){
         
         // show up arrow when open
-        $("#subSecButton th span").toggleClass("fas fa-angle-up");
+        $("#subSecButton th span").toggleClass("fas fa-chevron-up");
         
         // show down arrow when closed
-        $("#subSecButton th span").toggleClass("fas fa-angle-down");
+        $("#subSecButton th span").toggleClass("fas fa-chevron-down");
         
         // add border-bottom
         $("#subSecButton").css(

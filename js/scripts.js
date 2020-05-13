@@ -90,28 +90,32 @@ $(window).on("load", function getLocation() {
             $("#current").html("You're currently viewing the suburb of");
 
             // default location is Canberra lat long
-            var defaultLocation = "-35.3078,149.1344";
+            var defaultLocation = "-35.3156,149.1442";
 
             // get weather data for default location
             getWeatherData(defaultLocation);
 
             // display default location
-            var locSuburb = "Barton";
+            var locSuburb = "Kingston";
             var locState = "Australian Capital Territory";
             var locStateCode = "ACT";
-            var locPC = "2600";
+            var locPC = "2604";
             
             $("#location").append(locSuburb);
-            $("#state").append(locState + " (" + locStateCode + ")");
+            $("#state").html(locState + " (" + locStateCode + ")");
     //        $("#district").append(locDistrict);
-            $("#postcode").append(locPC);
-            $(".suburb span").append(locSuburb);
+            $("#postcode").html(locPC);
+            $(".suburb span").html(locSuburb);
+            $("#coords").html(defaultLocation);
 
             // call function to get suburb data from Wikipedia API
             getSuburbData(locSuburb, locState, locPC);
 
             // call function to get suburb profile data from Domain API
             getProfileData(locSuburb, locStateCode, locPC);
+    
+            // call function to get place data from ACTmapi API
+            getPlaceData(locSuburb);
 
         } // close error function
 
@@ -219,10 +223,10 @@ function getLocationName(latLongCoords) {
     
         // append location to data to html
         $("#location").append(locSuburb);
-        $("#state").append(locState);
+        $("#state").html(locState + " (" + locStateCode + ")");
 //        $("#district").append(locDistrict);
-        $("#postcode").append(locPC);
-        $(".suburb span").append(locSuburb);
+        $("#postcode").html(locPC);
+        $(".suburb span").html(locSuburb);
         
         // call function to get suburb data from Wikipedia API
         getSuburbData(locSuburb, locState, locPC);
@@ -306,26 +310,32 @@ function getPlaceData(locSuburb){
         var givenNames = placeData[2].replace("Given Names: ","");
         var namesake = givenNames + " " + surname;
         var title = placeData[3].replace("Title: ","");
-        var birth = placeData[4].replace("Birth Year: ","");
-        var death = placeData[5].replace("Death Year: ","");
-        var bioString = placeData[7].replace("Biography: ","");
+        var birth = placeData[5].replace("Birth Year: ","");
+        var death = placeData[6].replace("Death Year: ","");
+        var bioString = placeData[placeData.length-1].replace("Biography: ","");
         
         // split bioString and store as array
         var bio = bioString.split("; ");
+        $("#nsBio").html(bio);
         
-        // for loop to replace each instance of string to format on new line
-//        for (var i = 0; i < bio.length; i++){
-//                
-//                $(bio).append(".<br />");
-//            
-//        };
+        // for loop to make each instance of string to format on new line
+        for (var i = 0; i < bio.length; i++){
+                
+            function myFunction(bio){
+                
+                var row = bio[i];
+                $(row).append(".<br />");
+                
+            }
+            
+        };
         
         console.log(bio);
         
 //        console.log(placeData);
         $("#nsName").html(namesake);
         $("#nsTitle").html(title);
-        $("#nsBio").html(bio);
+//        $("#nsBio").html(bio);
         $("#nsLife").html(birth + "-" + death);
         
         // call function to get namsake image from Wikipedia API
