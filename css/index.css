@@ -23,7 +23,7 @@ body{
     font-family: 'Raleway', sans-serif;
 }
 
-.container{
+.p1Container{
     width: 99vw;
     height: 99vw;
     margin: 0 auto;
@@ -71,7 +71,7 @@ img{
 
 
 /** TITLE **/
-#title{
+#p1Title{
     width: 60vw;
     min-height: 20em;
     color: #333;
@@ -84,7 +84,7 @@ img{
     left: 50%;
 }
 
-#title h1{
+#p1Title h1{
     font-size: 3em;
     padding: 0.5em;
     background-color: #4481eb;
@@ -95,16 +95,16 @@ img{
     text-shadow: rgba(255,255,255,0.4) 0px 3px 3px;
 }
 
-#title sup{
+#p1Title sup{
     vertical-align: text-top;
     font-size: x-large;
 }
 
-#title #box h3{
+#p1Title #box h3{
     font-style: italic;
 }
 
-#title .fas{
+#p1Title .fas{
     font-size: 0.9em;
 }
 
@@ -140,7 +140,7 @@ img{
 #form h3{
 }
 
-table{
+.p1Table{
     margin: 0 auto;
     padding-bottom: 1em;
 }
@@ -149,27 +149,27 @@ form{
     width: 100%;
 }
 
-form .tableRow{
+form .p1TableRow{
     width: 100%;
 }
 
-form .tableRow td{
+form .p1TableRow td{
     padding: 0.3em 0;
 }
 
-.tableRow .label{
+.p1TableRow .p1Label{
     text-align: right;
     font-size: 0.9em;
     padding-right: 0.5em;
 }
 
-.tableRow .label label{
+.p1TableRow .p1Label label{
     text-transform: uppercase;
     font-weight: bold;
     padding-right: 0.5em;
 }
 
-.tableRow .input input{
+.p1TableRow .input input{
     width: 20em;
     height: 2.25em;
     margin: 0 auto;
@@ -180,11 +180,11 @@ form .tableRow td{
     background-color: rgba(51, 178, 255, 0.2);
 }
 
-.tableRow .input input:focus{
+.p1TableRow .input input:focus{
     background-color: #FFF;
 }
 
-.tableRow .input select{
+.p1TableRow .input select{
     width: 20em;
     height: 2.5em;
     margin: 0 auto;
@@ -195,7 +195,7 @@ form .tableRow td{
     background-color: rgba(51, 178, 255, 0.2);
 }
 
-.tableRow .input select:focus{
+.p1TableRow .input select:focus{
     background-color: #FFF;
     border-color: #33B2FF;
 }
@@ -271,7 +271,7 @@ form .tableRow td{
 @media screen and (min-width: 560px) and (max-width: 1160px){
     
     /** TITLE **/
-    #title{
+    #p1Title{
         width: 100%;
         padding: 0;
         background-color: rgba(224, 224, 224, 0);
@@ -300,34 +300,34 @@ form .tableRow td{
         background-color: rgba(224, 224, 224, 0.95);
     }
 
-    table{
+    p1Table{
         width: 90%;
         text-align: center;
     }
 
-    form .tableRow td{
+    form .p1TableRow td{
         padding: 0.3em 0 0.8em;
         float: left;
         margin: 0 auto;
         width: 100%;
     }
 
-    .tableRow .label{
+    .p1TableRow .p1Label{
         font-size: 0.9em;
         padding-bottom: 0.1em;
         width: 100%;
         text-align: center;
     }
 
-    .tableRow .label label{
+    .p1TableRow .p1Label label{
         padding-right: 0;
     }
 
-    .tableRow .input input:focus{
+    .p1TableRow .input input:focus{
         background-color: #FFF;
     }
 
-    .tableRow .input select{
+    .p1TableRow .input select{
         width: 22.8em;
         height: 2.8em;
         margin: 0 auto;
@@ -338,7 +338,7 @@ form .tableRow td{
         background-color: rgba(51, 178, 255, 0.2);
     }
 
-    .tableRow .input select:focus{
+    .p1TableRow .input select:focus{
         background-color: #FFF;
         border-color: #33B2FF;
     }
@@ -366,7 +366,7 @@ form .tableRow td{
 @media screen and (max-width: 559px){
     
     /** TITLE **/
-    #title{
+    #p1Title{
         width: 100%;
         padding: 0;
         background-color: rgba(224, 224, 224, 0);
@@ -379,7 +379,7 @@ form .tableRow td{
         padding: 0;
     }
     
-    #title #box h1{
+    #p1Title #box h1{
         font-size: 2.5em;
     }
 
@@ -399,34 +399,34 @@ form .tableRow td{
         background-color: rgba(224, 224, 224, 0.95);
     }
 
-    table{
+    .p1Table{
         width: 90%;
         text-align: center;
     }
 
-    form .tableRow td{
+    form .p1TableRow td{
         padding: 0.3em 0 0.8em;
         float: left;
         margin: 0 auto;
         width: 100%;
     }
 
-    .tableRow .label{
+    .p1TableRow .p1Label{
         font-size: 0.9em;
         padding-bottom: 0.1em;
         width: 100%;
         text-align: center;
     }
 
-    .tableRow .label label{
+    .p1TableRow .p1Label label{
         padding-right: 0;
     }
 
-    .tableRow .input input:focus{
+    .p1TableRow .input input:focus{
         background-color: #FFF;
     }
 
-    .tableRow .input select{
+    .p1TableRow .input select{
         width: 22.8em;
         height: 2.8em;
         margin: 0 auto;
@@ -437,7 +437,7 @@ form .tableRow td{
         background-color: rgba(51, 178, 255, 0.2);
     }
 
-    .tableRow .input select:focus{
+    .p1TableRow .input select:focus{
         background-color: #FFF;
         border-color: #33B2FF;
     }

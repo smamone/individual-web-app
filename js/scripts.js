@@ -1,58 +1,50 @@
 // JavaScript
 // APIs
 
-// empty global variables to store index.html form data
-var locSuburb = "";
-var locSate = "";
-var locPC = "";
-
 $(document).ready(function () {
+
+    $("#page2").hide();
     
-    // on index.html current location button click
+    // on current location button click
     $("#currentLoc").click(function (event){
         
-        // load suburb.html
-        window.location.href = "suburb.html";
+        $("#page1").hide();
+        $("#page2").show();
         
-        // call function to get location after loading suburb.html
+        // call function to get location after showing page 2
         getLocation();
             
     }); // close click function
 
-    // on index.html form submit button click
+    // on form submit button click
     $("#submit").click(function (event){
 
         // get data from form
-        var formData = {
-            "suburb" : document.getElementById("suburbField").value,
-            "state" : document.getElementById("stateField").value,
-            "postcode" : document.getElementById("pcField").value
-        }
-
-        localStorage.setItem("formData", JSON.stringify(formData));
-
-        console.log(formData);
+        var locSuburb = document.getElementById("suburbField").value;
+        var locStateCode = document.getElementById("stateField").value;
+        var locPC = document.getElementById("pcField").value;
         
         // call function to get population data from AEC API
 //        getElectoralData(locState);
-
-    //    localStorage.removeItem("suburbData"); // clear localstorage
         
         // call autocomplete function for suburb input
-        autocomplete();
+//        autocomplete();
+        
+        $("#page1").hide();
+        $("#page2").show();
 
         // call loadFormData function
-        loadFormData(locSuburb, locSate, locPC);
+        loadFormData(locSuburb, locStateCode, locPC);
         
-    }); // close getFormData function
+    }); // close click function
 
 }); // close document ready
 
 
 // --- FUNCTIONS --- //
 
-// FUNCTION to GET LOCATION DATA ON WINDOW LOAD
-$(window).on("load", function getLocation() {
+// FUNCTION to GET LOCATION DATA on PAGE 2 LOAD
+function getLocation() {
             
     var newLocation = "";
 
@@ -124,22 +116,14 @@ $(window).on("load", function getLocation() {
 
     } // close if statement
 
-}); // close window onload function
+} // close getLocation function
 
 
-// FUNCTION to PASS DATA from index.html form to suburb.html
-function loadFormData(locSuburb, locSate, locPC) {
-
-    var getFormData = JSON.parse(localStorage.getItem("formData"));
-    
-//    console.log(getSuburbData);
-
-    var locSuburb = getSuburbData.suburb;
-    var locStateCode = getSuburbData.state;
-    var locPC = getSuburbData.postcode;
+// FUNCTION to PASS DATA from page 1 form to page 2
+function loadFormData(locSuburb, locStateCode, locPC) {
 
     console.log(locSuburb);
-    console.log(locState);
+    console.log(locStateCode);
     console.log(locPC);
     
     // declare locState based on locState value
@@ -175,24 +159,16 @@ function loadFormData(locSuburb, locSate, locPC) {
     
 //    console.log(locState);
     
-    // append location to data to suburb.html
-    $("#location span").append(locSuburb);
-    $("#state").append(locStateCode);
+    // append location to data to page 2
+    $("#location").append(locSuburb);
+    $("#location").css("text-transform", "capitalize");
+    $("#state").html(locState + " (" + locStateCode + ")");
 //        $("#district").append(locDistrict);
-    $("#postcode").append(locPC);
-    $(".suburb span").append(locSuburb);
-        
-    // call function to get suburb data from Wikipedia API
-    getSuburbData(locSuburb, locState, locPC);
-
-    // call function to get suburb profile data from Domain API
-    getProfileData(locSuburb, locStateCode, locPC);
+    $("#postcode").html(locPC);
+    $(".suburb span").html(locSuburb);
     
-    // call function to get place data from ACTmapi API
-    getPlaceData(locSuburb);
-    
-    // load suburb.html
-    location.href = "suburb.html";
+    // call function to get coordinates from Open Cage API
+    getLatLong(locSuburb, locState, locStateCode, locPC);
 
 } // close getFormData function
 
@@ -200,7 +176,7 @@ function loadFormData(locSuburb, locSate, locPC) {
 // FUNCTION to get location name from OPEN CAGE API
 function getLocationName(latLongCoords) {
 
-    console.log("in get location name");
+    console.log("loading Open Cage data");
 
     // my Open Cage Data API key
     var keyOpenCage = "135d8af66fb04c9bac0092208a55e2a7";
@@ -245,10 +221,50 @@ function getLocationName(latLongCoords) {
 } // close getLocationName function
 
 
+// FUNCTION to get coordinates from OPEN CAGE API
+function getLatLong(locSuburb, locState, locStateCode, locPC) {
+
+    console.log("loading Open Cage data");
+
+    // my Open Cage Data API key
+    var keyOpenCage = "135d8af66fb04c9bac0092208a55e2a7";
+
+    // Open Cage Data API call
+    var urlGeocode = "https://api.opencagedata.com/geocode/v1/json?q=" + locSuburb + "," + locState + "," + locPC + "&key=" + keyOpenCage;
+    
+    // make request to server using Open Cage API call
+    $.getJSON(urlGeocode, function (locationData) {
+
+//        console.log(locationData.results[0]);
+
+        var locLat = locationData.results[0].bounds.southwest.lat;
+        var locLong = locationData.results[0].bounds.southwest.lng;
+        var currentLocation = locLat + "," + locLong;
+    
+        // append location to data to html
+        $("#coords").html(currentLocation);
+        
+        // call function to get temperature data from Dark Sky API
+        getWeatherData(currentLocation);
+        
+        // call function to get suburb data from Wikipedia API
+        getSuburbData(locSuburb, locState, locPC);
+            
+        // call function to get suburb profile data from Domain API
+        getProfileData(locSuburb, locStateCode, locPC);
+    
+        // call function to get place data from ACTmapi API
+        getPlaceData(locSuburb);
+
+    }); // close getJSON
+
+} // close getLocationName function
+
+
 // FUNCTION to load data from DARK SKY API
 function getWeatherData(currentLocation) {
     
-    console.log("in get location data");
+    console.log("loading Dark Sky data");
 
     // my Dark Sky API key
     var keyDarkSky = "008bf272749fe7c833b4606af967ab5e";
@@ -299,7 +315,8 @@ function getPlaceData(locSuburb){
     
     $.getJSON(placeNames, function (data) {
         
-        console.log(data);
+        console.log("loading ACTmapi data");
+//        console.log(data);
         
         var placeString = data.results[1].attributes.DESCRIPTION;
         
@@ -330,7 +347,7 @@ function getPlaceData(locSuburb){
             
         };
         
-        console.log(bio);
+//        console.log(bio);
         
 //        console.log(placeData);
         $("#nsName").html(namesake);
@@ -371,7 +388,8 @@ function getNamesakeImage(namesake) {
         
         // make request to server using Wikipedia API call
         $.getJSON(wikiIntro, function (wikiSuburb) {
-            
+        
+            console.log("loading Wikipedia namesake image");
 //            console.log(wikiSuburb);
             
             // get Wikipedia suburb page image
@@ -414,8 +432,7 @@ function getGoogleData(locSuburb, locState, locPC){
 // FUNCTION to load data from WIKIPEDIA API
 function getSuburbData(locSuburb, locState, locPC, namesake) {
     
-    console.log("in get suburb data");
-    console.log(locSuburb + " " + locState + " " + locPC);
+//    console.log(locSuburb + " " + locState + " " + locPC);
 
     var wikiSearch = "https://en.wikipedia.org/w/api.php?action=query&list=search&srprop&srsearch=" + locSuburb + "," + locState + "," + locPC + "&prop=extracts&format=json" + "&origin=*";
     
@@ -424,7 +441,7 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
     // make request to server using Wikipedia API call
     $.getJSON(wikiSearch, function (wikiData) {
 
-        console.log("loading wikipedia data");
+        console.log("loading Wikipedia location data");
 //        console.log(wikiData);
         
         // create variable to hold suburb info
@@ -441,7 +458,8 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
         
         $.getJSON(wikiPageIntro, function (wikiIntro) {
             
-            console.log(wikiIntro);
+            console.log("loading Wikipedia intro data");
+//            console.log(wikiIntro);
            
             // add summary to html
             $("#summary").html(wikiIntro.query.pages[wikiPageId].extract);
@@ -450,6 +468,7 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
         
         $.getJSON(wikiPage, function (wikiSuburb) {
             
+            console.log("loading Wikipedia suburb image");
 //            console.log(wikiSuburb);
             
             // get Wikipedia suburb page image
@@ -476,8 +495,6 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
 
 // FUNCTION to load data from Domain API
 function getProfileData(locSuburb, locStateCode, locPC) {
-    
-    console.log("in get profile data");
 
     // my Domain API key
     var keyDomain = "key_845f270a8ad388a68456361972c842bf";
@@ -487,10 +504,9 @@ function getProfileData(locSuburb, locStateCode, locPC) {
     
 //    console.log(domainSearch);
     
-    // make request to server using Dark Sky API call
+    // make request to server using Domain API call
     $.getJSON(domainSearch, function (domainData) {
         
-        console.log("loading domain data");
 //        console.log(domainData);
     
         var suburbId = domainData[0].ids[0].id;
@@ -500,7 +516,8 @@ function getProfileData(locSuburb, locStateCode, locPC) {
         var urlDomain = "https://api.domain.com.au/v1/locations/profiles/" + suburbId + "?api_key=" + keyDomain;
         
         $.getJSON(urlDomain, function (domainData) {
-            
+        
+            console.log("loading Domain data");
 //            console.log(domainData);
 
             var districtData = domainData.areaName;
@@ -537,7 +554,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             } // close for loop
 
             // append data to html
-            $("#district").append(districtData);
+            $("#district").html(districtData);
             $("#region").html(regionData);
             $("#population").html(thou(popDataNum));
             

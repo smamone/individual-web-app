@@ -6,6 +6,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/suburb.css" />
         <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Lora">
         <link rel="stylesheet"
@@ -16,98 +17,366 @@
 
     <body>
         
-        <div class="container">
-        
-            <div id="title">
+        <div id="page1">
             
-                <div id="box">
+            <div class="p1Container">
+
+                <div id="p1Title">
+
+                    <div id="box">
+                        <h1>
+                            <span class="raleway"><sup>Spotlight on </sup></span>
+                            <span class="lora">Suburbia</span>
+                            <span class="fas fa-search"></span>
+                        </h1>
+                        <h3>Discover the origins and more of the suburbs of Canberra.</h3>
+                    </div>
+
+                    <div id="currentLoc">
+
+                        <h3>Use your current location</h3>
+
+                        <p>
+                            <a id="currentButton" class="button">GO</a>
+                        </p>                    
+
+                    </div> <!-- close CURRENTLOC -->
+
+                    <div id="form">
+
+                        <h3>Or search by suburb name,<br>state/territory and postcode</h3>
+
+<!--                        <form autocomplete="off">-->
+
+                            <table class="p1Table" autocomplete="off">
+
+                                <tr class="p1TableRow">
+                                    <td class="p1Label">
+                                        <label for="suburb">Suburb</label>
+                                    </td>
+                                    <td class="input autocomplete">
+                                        <input type="text" onkeyup="this.value = this.value.toUpperCase();" id="suburbField" name="suburb" placeholder="Begin typing..." required />
+                                    </td>
+                                </tr>
+
+                                <tr class="p1TableRow">
+                                    <td class="p1Label">
+                                        <label for="state">State/Territory</label>
+                                    </td>
+                                    <td class="input">
+                                        <select id="stateField" name="state" required>
+                                    <option disabled selected value>Select</option>
+                                    <option value="ACT">ACT</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr class="p1TableRow">
+                                    <td class="p1Label">
+                                        <label for="postcode">Postcode</label>
+                                    </td>
+                                    <td class="input">
+                                        <input type="number" id="pcField" name="postcode" placeholder="e.g. 2600" maxlength="4" size="4" required />
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <a class="button">
+                                <input type="submit" id="submit" value="GO" />
+                            </a>
+
+<!--                        </form>-->
+
+                    </div> <!-- close FORM -->
+
+                </div> <!-- close TITLE -->
+
+                <div class="widthContain">
+                    <p id="imageref">Image by 
+                        <a href="https://pixabay.com/photos/phoenix-hiking-arizona-desert-5135689/">trmsims15</a>, 2020
+                    </p>
+                </div>
+
+            </div> <!-- close CONTAINER -->
+            
+        </div> <!-- close PAGE 1-->
+        
+        <div id="page2">
+            
+            <div id="header">
+
+                <div id="title">
                     <h1>
                         <span class="raleway"><sup>Spotlight on </sup></span>
                         <span class="lora">Suburbia</span>
                         <span class="fas fa-search"></span>
                     </h1>
-                    <h3>Discover the origins and more of the suburbs of Canberra.</h3>
                 </div>
 
-                <div id="currentLoc">
+                <div id="home">
+                    <a href="index.html">
+                        <p class="fas fa-home" alt="home"></p>
+                    </a>
+                </div>
 
-                    <h3>Use your current location</h3>
 
-                    <p>
-                        <a id="currentButton" class="button">GO</a>
-                    </p>                    
+            </div> <!-- close HEADER -->
 
-                </div> <!-- close CURRENTLOC -->
+            <div class="container">
 
-                <div id="form">
+                <div id="suburb">
 
-                    <h3>Or search by suburb name,<br>state/territory and postcode</h3>
+                    <div class="image">
 
-                    <form autocomplete="off" action="suburb.html">
-                        
-                        <table class="table">
-                            
-                            <tr class="tableRow">
-                                <td class="label">
-                                    <label for="suburb">Suburb</label>
+                        <img />
+
+                    </div>
+
+                    <div class="right">
+
+                        <table id="mainSec" class="table">
+
+                            <tr>
+                                <h3 id="current">You're currently in the suburb of</h3>
+                            </tr>
+
+                            <tr>
+                                <h1 id="location">
+                                    <span class="fas fa-map-marker-alt"></span>&nbsp 
+                                </h1>
+                            </tr>
+
+                            <tr>
+                                <td class="leftTd">
+                                    <h3>District</h3>
                                 </td>
-                                <td class="input autocomplete">
-                                    <input type="text" id="suburbField" name="suburb" placeholder="Begin typing..." required />
+                                <td>
+                                    <h2 id="district" class="h2Main">Not available</h2>
                                 </td>
                             </tr>
-                            
-                            <tr class="tableRow">
-                                <td class="label">
-                                    <label for="state">State/Territory</label>
+
+                            <tr>
+                                <td class="leftTd">
+                                    <h3>Region</h3>
                                 </td>
-                                <td class="input">
-                                    <select id="stateField" name="state" required>
-                                <option disabled selected value>Select</option>
-                                <option value="ACT">ACT</option>
-                                <!--<option value="NSW">NSW</option>
-                                <option value="NT">NT</option>
-                                <option value="QLD">QLD</option>
-                                <option value="SA">SA</option>
-                                <option value="TAS">TAS</option>
-                                <option value="WA">WA</option>-->
-                                    </select>
+                                <td>
+                                    <h2 id="region" class="h2Main">Not available</h2>
                                 </td>
                             </tr>
-                            
-                            <tr class="tableRow">
-                                <td class="label">
-                                    <label for="postcode">Postcode</label>
+
+                            <tr>
+                                <td class="leftTd">
+                                    <h3>State/Territory</h3>
                                 </td>
-                                <td class="input">
-                                    <input type="number" id="pcField" name="postcode" placeholder="e.g. 2600" maxlength="4" size="4" required />
+                                <td>
+                                    <h2 id="state" class="h2Main">Not available</h2>
                                 </td>
                             </tr>
-                        
+
+                            <tr>
+                                <td class="leftTd">
+                                    <h3>Postcode</h3>
+                                </td>
+                                <td>
+                                    <h2 id="postcode" class="h2Main">Not available</h2>
+                                </td>
+                            </tr>
+
                         </table>
 
-                        <a class="button">
-                            <input type="submit" id="submit" value="GO" />
-                        </a>
+                    </div>
 
-                    </form>
+                </div> <!-- close SUBURB -->
 
-                </div> <!-- close FORM -->
+                <div id="namesakeSection">
+
+                    <div class="image">
+                        <img src="" />
+                    </div>
+
+                    <div class="right">
+
+                        <table id="namesakeTable" class="table">
+
+                            <tr>
+                                <h3 id="leftH3"><span  class="fas fa-user"></span>&nbsp Namesake</h3>
+                            </tr>
+
+                            <tr>
+                                <td class="leftTd">
+                                    <h3>Name</h3>
+                                </td>
+                                <td>
+                                    <h2 id="nsName" class="h2Ns">Not available</h2>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="leftTd">
+                                    <h3>Title</h3>
+                                </td>
+                                <td>
+                                    <h2 id="nsTitle" class="h2Ns">Not available</h2>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="leftTd">
+                                    <h3>Life</h3>
+                                </td>
+                                <td>
+                                    <h2 id="nsLife" class="h2Ns">Not available</h2>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="leftTd">
+                                    <h3>Biography</h3>
+                                </td>
+                                <td>
+                                    <p id="nsBio" class="h2Ns">Not available</p>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div> <!-- close NAMESAKE INFO -->
+
+                <div id="subMain">
+
+                    <table class="table">
+
+                        <tr class="suburb">
+                            <th>Summary of <span></span></th>
+                        </tr>
+
+                        <tr class="summary">
+                            <td id="summary">Not available</td>
+                        </tr>
+
+                    </table>
+
+                    <table class="table">
+
+                        <tr class="suburb">
+                            <th colspan="3">Origins of <span></span></th>
+                        </tr>
+
+                        <tr class="picTableRow">
+                            <td class="fas fa-birthday-cake"></td>
+                            <td class="fas fa-map-marked-alt"></td>
+                            <td class="fas fa-map-signs"></td>
+                        </tr>
+
+                        <tr class="headTableRow">
+                            <th>Established</th>
+                            <th>Coordinates</th>
+                            <th>Street Naming Theme</th>
+                        </tr>
+
+                        <tr class="dataTableRow">
+                            <td id="established">Not available</td>
+                            <td id="coords">Not available</td>
+                            <td id="streetNameTheme">Not available</td>
+                        </tr>
+
+                    </table>
+
+                    <table class="table">
+
+                        <tr class="suburb">
+                            <th colspan="3">Area details of <span></span></th>
+                        </tr>
+
+                        <tr class="picTableRow">
+                            <td class="fas fa-house-user"></td>
+                            <td class="fas fa-vote-yea"></td>
+                            <td class="fas fa-address-card"></td>
+                        </tr>
+
+                        <tr class="headTableRow">
+                            <th>District</th>
+                            <th>Territory Electorate</th>
+                            <th>Federal Division</th>
+                        </tr>
+
+                        <tr class="dataTableRow">
+                            <td id="">Not available</td>
+                            <td id="electorate">Not available</td>
+                            <td id="federal">Not available</td>
+                        </tr>
+
+                    </table>
+
+                    <table class="table">
+
+                        <tr class="suburb">
+                            <th colspan="3">Currently in <span></span></th>
+                        </tr>
+
+                        <tr class="picTableRow">
+                            <td class="fas fa-users"></td>
+                            <td class="fas fa-cloud-sun"></td>
+                            <td class="fas fa-map-marked-alt"></td>
+                        </tr>
+
+                        <tr class="headTableRow">
+                            <th>Population</th>
+                            <th>Current temperature</th>
+                            <th>Other</th>
+                        </tr>
+
+                        <tr class="dataTableRow">
+                            <td id="population">Not available</td>
+                            <td id="currentTemp"><span>Not available</span>&deg;C</td>
+                            <td id="">Not available<span></span></td>
+                        </tr>
+
+                    </table>
+
+                </div> <!-- close SUBMAIN -->
+
+                <div id="subSec">
+
+                    <table id="subSecButton" class="table">
+
+                        <tr class="secTableRow">
+                            <th>Street Names</th>
+                            <th>Surrounding suburbs <span class="fas fa-chevron-down"></span></th>
+                        </tr>
+
+                    </table>
+
+                    <table id="subSecInfo" class="table">
+
+                        <!--<tr class="secTableRow">
+                            <td class="streetNames">street names</td>
+                            <td class="surroundSubs"></td>
+                        </tr>-->
+
+                    </table>
+
+                </div> <!-- close SUBSEC -->
+
+                <div>
+                    <p id="imageref">Image by 
+                        <a href="https://pixabay.com/photos/phoenix-hiking-arizona-desert-5135689/">trmsims15</a>, 2020
+                    </p>
+                </div>
+
+            </div> <!-- close CONTAINER -->
             
-            </div> <!-- close TITLE -->
-            
-            <div class="widthContain">
-                <p id="imageref">Image by 
-                    <a href="https://pixabay.com/photos/phoenix-hiking-arizona-desert-5135689/">trmsims15</a>, 2020
-                </p>
-            </div>
-            
-        </div> <!-- close CONTAINER -->
+        </div> <!-- close PGE 2 -->
 
         
         <!-- SCRIPTS -->
         <script src="js/jquery-3.4.1.js"></script>
         <script src="js/scripts.js"></script>
-        <script src="js/autocomplete.js"></script>
+        <script src="js/slider.js"></script>
+<!--        <script src="js/autocomplete.js"></script>-->
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         
     </body>
