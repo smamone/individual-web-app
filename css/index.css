@@ -145,16 +145,12 @@ img{
     padding-bottom: 1em;
 }
 
-form{
+.p1TableRow{
     width: 100%;
 }
 
-form .p1TableRow{
-    width: 100%;
-}
-
-form .p1TableRow td{
-    padding: 0.3em 0;
+.p1TableRow td{
+    padding: 0.3em 0 0.6em;
 }
 
 .p1TableRow .p1Label{
@@ -268,7 +264,7 @@ form .p1TableRow td{
 
 
 /** CSS RESPONSIVE SETTINGS **/
-@media screen and (min-width: 560px) and (max-width: 1160px){
+@media screen and (min-width: 1001px) and (max-width: 1160px){
     
     /** TITLE **/
     #p1Title{
@@ -287,7 +283,7 @@ form .p1TableRow td{
 
     /** CURRENTLOC **/
     #currentLoc{
-        width: 80%;
+        width: 50%;
         padding: 1em 0 2em;
         background-color: rgba(224, 224, 224, 0.95);
     }
@@ -295,7 +291,7 @@ form .p1TableRow td{
 
     /** FORM **/
     #form{
-        width: 80%;
+        width: 50%;
         padding: 1em 0 2em;
         background-color: rgba(224, 224, 224, 0.95);
     }
@@ -305,7 +301,112 @@ form .p1TableRow td{
         text-align: center;
     }
 
-    form .p1TableRow td{
+    .p1TableRow td{
+        padding: 0.3em 0 0.8em;
+        float: left;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .p1TableRow .p1Label{
+        font-size: 0.9em;
+        padding-bottom: 0.1em;
+        width: 100%;
+        text-align: center;
+        float: left;
+    }
+
+    .p1TableRow .p1Label label{
+        padding-right: 0;
+    }
+
+    .p1TableRow .input input:focus{
+        background-color: #FFF;
+    }
+
+    .p1TableRow .input select{
+        width: 22.8em;
+        height: 2.8em;
+        margin: 0 auto;
+        padding: 0 3em 0 2em;
+        text-align: right;
+        font-size: 0.8em;
+        border-color: #33B2FF;
+        background-color: rgba(51, 178, 255, 0.2);
+    }
+
+    .p1TableRow .input select:focus{
+        background-color: #FFF;
+        border-color: #33B2FF;
+    }
+
+    #submit, #currentLoc p{
+        width: 12em;
+        padding: 1em 0;
+        margin: 0 auto;
+        color: #FFF;
+        background-color: #4481eb;
+        border: 0.1em solid #FFF;
+        border-radius: 0.4em;
+        font-size: 0.9em;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    #imageref{
+        text-align: center;
+        padding: 0.5em 0;
+    }
+    
+}
+
+@media screen and (min-width: 661px) and (max-width: 1000px){
+    
+    /** TITLE **/
+    #p1Title{
+        width: 100%;
+        padding: 0;
+        background-color: rgba(224, 224, 224, 0);
+        border: none;
+        top: 0;
+    }
+    
+    #box{
+        width: 80%;
+        padding: 0;
+    }
+    
+    #p1Title #box h1{
+        font-size: 2.5em;
+    }
+
+
+    /** CURRENTLOC **/
+    #currentLoc{
+        width: 70%;
+        padding: 1em 0 2em;
+        background-color: rgba(224, 224, 224, 0.95);
+    }
+
+
+    /** FORM **/
+    #form{
+        width: 70%;
+        padding: 1em 0 2em;
+        background-color: rgba(224, 224, 224, 0.95);
+    }
+
+    .p1Table{
+        width: 90%;
+        text-align: center;
+    }
+    
+    .p1TableRow{
+        width: 100%;
+        padding: 2em 0;
+    }
+
+    .p1TableRow td{
         padding: 0.3em 0 0.8em;
         float: left;
         margin: 0 auto;
@@ -363,7 +464,7 @@ form .p1TableRow td{
     
 }
 
-@media screen and (max-width: 559px){
+@media screen and (min-width: 0px) and (max-width: 660px){
     
     /** TITLE **/
     #p1Title{
@@ -403,8 +504,13 @@ form .p1TableRow td{
         width: 90%;
         text-align: center;
     }
+    
+    .p1TableRow{
+        width: 100%;
+        padding: 2em 0;
+    }
 
-    form .p1TableRow td{
+    .p1TableRow td{
         padding: 0.3em 0 0.8em;
         float: left;
         margin: 0 auto;

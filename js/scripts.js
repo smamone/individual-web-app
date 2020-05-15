@@ -24,9 +24,6 @@ $(document).ready(function () {
         var locStateCode = document.getElementById("stateField").value;
         var locPC = document.getElementById("pcField").value;
         
-        // call function to get population data from AEC API
-//        getElectoralData(locState);
-        
         // call autocomplete function for suburb input
 //        autocomplete();
         
@@ -50,6 +47,7 @@ function getLocation() {
 
     if (navigator.geolocation) {
 
+        // FUNCTION for SUCCESS
         function success(pos) {
 
             var coords = pos.coords;
@@ -68,12 +66,13 @@ function getLocation() {
 
             // call function to get weather data from Dark Sky API
             getWeatherData(newLocation);
-
-            // call function to get suburb data from TROVE API
-//            getTroveData();
+            
+            // call function to get population data from AEC API
+            getElectoralData(coords);
 
         } // close success function
 
+        // FUNCTION for ERROR
         function error(err) {
 
             // display error
@@ -95,7 +94,6 @@ function getLocation() {
             
             $("#location").append(locSuburb);
             $("#state").html(locState + " (" + locStateCode + ")");
-    //        $("#district").append(locDistrict);
             $("#postcode").html(locPC);
             $(".suburb span").html(locSuburb);
             $("#coords").html(defaultLocation);
@@ -104,7 +102,7 @@ function getLocation() {
             getSuburbData(locSuburb, locState, locPC);
 
             // call function to get suburb profile data from Domain API
-            getProfileData(locSuburb, locStateCode, locPC);
+            getProfileData(locSuburb, locStateCode, locPC, newLocation);
     
             // call function to get place data from ACTmapi API
             getPlaceData(locSuburb);
@@ -119,7 +117,7 @@ function getLocation() {
 } // close getLocation function
 
 
-// FUNCTION to PASS DATA from page 1 form to page 2
+// FUNCTION to PASS DATA from PAGE 1 FORM to PAGE 2
 function loadFormData(locSuburb, locStateCode, locPC) {
 
     console.log(locSuburb);
@@ -165,7 +163,7 @@ function loadFormData(locSuburb, locStateCode, locPC) {
     $("#state").html(locState + " (" + locStateCode + ")");
 //        $("#district").append(locDistrict);
     $("#postcode").html(locPC);
-    $(".suburb span").html(locSuburb);
+    $(".locName").html(locSuburb);
     
     // call function to get coordinates from Open Cage API
     getLatLong(locSuburb, locState, locStateCode, locPC);
@@ -173,7 +171,7 @@ function loadFormData(locSuburb, locStateCode, locPC) {
 } // close getFormData function
 
 
-// FUNCTION to get location name from OPEN CAGE API
+// FUNCTION to get LOCATION NAME from OPEN CAGE API
 function getLocationName(latLongCoords) {
 
     console.log("loading Open Cage data");
@@ -214,14 +212,14 @@ function getLocationName(latLongCoords) {
         getPlaceData(locSuburb);
             
         // call function from Google API
-        getGoogleData(locSuburb, locState, locPC);
+//        getGoogleData(locSuburb, locState, locPC);
 
     }); // close getJSON
 
 } // close getLocationName function
 
 
-// FUNCTION to get coordinates from OPEN CAGE API
+// FUNCTION to get LOCATION COORDINATES from OPEN CAGE API
 function getLatLong(locSuburb, locState, locStateCode, locPC) {
 
     console.log("loading Open Cage data");
@@ -261,7 +259,7 @@ function getLatLong(locSuburb, locState, locStateCode, locPC) {
 } // close getLocationName function
 
 
-// FUNCTION to load data from DARK SKY API
+// FUNCTION to get CURRENT TEMP from DARK SKY API
 function getWeatherData(currentLocation) {
     
     console.log("loading Dark Sky data");
@@ -275,10 +273,10 @@ function getWeatherData(currentLocation) {
     // make request to server using Dark Sky API call
     $.getJSON(urlDarkSky, function (data) {
     
-        var currentTemp = data.currently.temperature;
+        var temp = data.currently.temperature;
     
         // TEMPERATURE
-        $("#currentTemp span").html(currentTemp.toFixed(1));
+        $("#temp").html(temp.toFixed(1));
         
     }); // close getJSON
 
@@ -286,29 +284,31 @@ function getWeatherData(currentLocation) {
 
 
 // FUNCTION to load data from AEC API
-function getElectoralData(locSuburb) {
+function getElectoralData(coords) {
 
     // Data AEC API call
-    var urlAec = "https://data.gov.au/data/dataset/8edfead5-009a-434e-90c3-fba58abd7904";
+//    var urlAec = "https://data.gov.au/data/dataset/8edfead5-009a-434e-90c3-fba58abd7904";
+    
+    var aecQuery = "https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/ACT_Electoral_Boundary/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json"
 
 //            console.log(urlAec);
 
     // make request to server using AEC API call
-    $.getJSON(urlAec, function (data) {
+    $.getJSON(aecQuery, function (data) {
 
         console.log(data);
 
-//        var locElectoral = data[0];
+        var locElectoral = data[0];
 
         // add electoral result to html
-//        $("#subMain .dataTableRow #population").html(locPop);
+        $("#subMain .dataTableRow #electorate").html(locElectoral);
 
     }); // close getJSON
 
 } // close getElectoralData function
 
 
-// FUNCTION to load suburb data from ACTmapi API
+// FUNCTION to get SUBURB DATA from ACTMAPI API
 function getPlaceData(locSuburb){
     
     var placeNames = "https://data.actmapi.act.gov.au/arcgis/rest/services/actmapi/PlaceNames/MapServer/find?searchText=" + locSuburb + "&contains=true&searchFields=Name&sr=&layers=None&layerDefs=&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&dynamicLayers=&returnZ=true&returnM=true&gdbVersion=&historicMoment=&returnUnformattedValues=true&returnFieldName=true&datumTransformations=&layerParameterValues=&mapRangeValues=&layerRangeValues=&f=pjson";
@@ -318,7 +318,8 @@ function getPlaceData(locSuburb){
         console.log("loading ACTmapi data");
 //        console.log(data);
         
-        var placeString = data.results[1].attributes.DESCRIPTION;
+        // get last item of array
+        var placeString = data.results[data.results.length-1].attributes.DESCRIPTION;
         
         // split placeString and store as array
         var placeData = placeString.split("<br>");
@@ -333,17 +334,15 @@ function getPlaceData(locSuburb){
         
         // split bioString and store as array
         var bio = bioString.split("; ");
-        $("#nsBio").html(bio);
+        
+//        console.log(bio);
+        
+        $("#nsBio").html("");
         
         // for loop to make each instance of string to format on new line
         for (var i = 0; i < bio.length; i++){
-                
-            function myFunction(bio){
-                
-                var row = bio[i];
-                $(row).append(".<br />");
-                
-            }
+            
+            $("#nsBio").append("<li class='list'>" + bio[i] + ".</li>");
             
         };
         
@@ -363,7 +362,7 @@ function getPlaceData(locSuburb){
 } // close getPlaceData function
 
 
-// FUNCTION to load namesake image from WIKIPEDIA API
+// FUNCTION to get NAMESAKE IMAGE from WIKIPEDIA API
 function getNamesakeImage(namesake) {
 
     var wikiNamesakeSearch = "https://en.wikipedia.org/w/api.php?action=query&list=search&srprop&srsearch=" + namesake + "&prop=extracts&format=json" + "&origin=*";
@@ -388,7 +387,7 @@ function getNamesakeImage(namesake) {
         
         // make request to server using Wikipedia API call
         $.getJSON(wikiIntro, function (wikiSuburb) {
-        
+            
             console.log("loading Wikipedia namesake image");
 //            console.log(wikiSuburb);
             
@@ -402,7 +401,7 @@ function getNamesakeImage(namesake) {
 
             // attribute image to html
             $("#namesakeSection .image img").attr("src", wikiImageLink);
-            
+                    
         }); // close getJSON
 
     }); // close getJSON
@@ -410,26 +409,7 @@ function getNamesakeImage(namesake) {
 } // close getSuburbData function
 
 
-// FUNCTION to load data from Google Search API
-function getGoogleData(locSuburb, locState, locPC){
-    
-    var keyGoogle = "AIzaSyCCy1xoop4IL-HQxJPMjuzMYt9Xf7SUg1E";  
-    var searchId = "008379666768099928482:0rfqenjzl81";
-    var urlGoogle = "https://www.googleapis.com/customsearch/v1?key=" + keyGoogle + "&cx=" + searchId + "&q=" + locSuburb + ",_" + locState + "%20" + locPC;
-    
-    console.log(urlGoogle);
-    
-    // make request to server using Google API call
-    $.getJSON(urlGoogle, function (data) {
-     
-        console.log(data);
-        
-    }); // close getJSON
-    
-} // close getGoogleData function
-
-
-// FUNCTION to load data from WIKIPEDIA API
+// FUNCTION to get SUBURB SUMMARY from WIKIPEDIA API
 function getSuburbData(locSuburb, locState, locPC, namesake) {
     
 //    console.log(locSuburb + " " + locState + " " + locPC);
@@ -469,7 +449,6 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
         $.getJSON(wikiPage, function (wikiSuburb) {
             
             console.log("loading Wikipedia suburb image");
-//            console.log(wikiSuburb);
             
             // get Wikipedia suburb page image
             var wikiImage = wikiSuburb.parse.images[2];
@@ -493,7 +472,7 @@ function getSuburbData(locSuburb, locState, locPC, namesake) {
 } // close getSuburbData function
 
 
-// FUNCTION to load data from Domain API
+// FUNCTION to get SUBURB DATA from DOMAIN API
 function getProfileData(locSuburb, locStateCode, locPC) {
 
     // my Domain API key
@@ -514,15 +493,19 @@ function getProfileData(locSuburb, locStateCode, locPC) {
 //        console.log(suburbId);
             
         var urlDomain = "https://api.domain.com.au/v1/locations/profiles/" + suburbId + "?api_key=" + keyDomain;
+    
+        var domainDemo = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&api_key=" + keyDomain;
         
         $.getJSON(urlDomain, function (domainData) {
         
             console.log("loading Domain data");
-//            console.log(domainData);
+            console.log(domainData);
 
             var districtData = domainData.areaName;
             var regionData = domainData.regionName;
             var popData = domainData.data.population;
+            var age = domainData.data.mostCommonAgeBracket;
+            var fams = domainData.data.marriedPercentage;
             
             // convert population string to number
             var popDataNum = parseInt(popData);
@@ -557,6 +540,139 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             $("#district").html(districtData);
             $("#region").html(regionData);
             $("#population").html(thou(popDataNum));
+            $("#age").html(age);
+            $("#fams").html((fams *100).toFixed(0) + "%");
+            
+            // get occupation data
+            var domainOcc = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=Occupation&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainOcc, function (domainData) {
+
+                console.log(domainData);
+
+                var avOcc = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#occ").html(avOcc);
+                
+            });
+            
+            // get employment data
+            var domainEmploy = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=16&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainEmploy, function (domainData) {
+
+                console.log(domainData);
+
+                var employ = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#employ").html(employ);
+                
+            });
+            
+            // get family composition data
+            var domainFamComp = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=FamilyComposition&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainFamComp, function (domainData) {
+
+                console.log(domainData);
+
+                var famComp = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#famComp").html(famComp);
+                
+            });
+            
+            // get country data
+            var domainCountry = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=CountryOfBirth&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainCountry, function (domainData) {
+
+                console.log(domainData);
+
+                var country = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#country").html(country);
+                
+            });
+            
+            // get religion data
+            var domainReligion = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=Religion&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainReligion, function (domainData) {
+
+                console.log(domainData);
+
+                var religion = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#religion").html(religion);
+                
+            });
+            
+            // get education data
+            var domainEducation = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=EducationAttendance&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainEducation, function (domainData) {
+
+                console.log(domainData);
+
+                var edu = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#edu").html(edu);
+                
+            });
+            
+            // get transport data
+            var domainTransport = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=TransportToWork&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainTransport, function (domainData) {
+
+                console.log(domainData);
+
+                var transport = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#transport").html(transport);
+                
+            });
+            
+            // get marital status data
+            var domainMarital = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=MaritalStatus&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainMarital, function (domainData) {
+
+                console.log(domainData);
+
+                var marital = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#marital").html(marital);
+                
+            });
+            
+            // get occupancy data
+            var domainOccupancy = "https://api.domain.com.au/v1/demographics?level=Suburb&id=" + suburbId + "&types=NatureOfOccupancy&year=2016" + "&api_key=" + keyDomain;
+            
+            $.getJSON(domainOccupancy, function (domainData) {
+
+                console.log(domainData);
+
+                var occupancy = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
+                
+                $("#occupancy").html(occupancy);
+                
+            });
+    
+            $.getJSON(domainDemo, function (domainData) {
+
+//                console.log(domainData);
+//                
+                var schools = "https://api.domain.com.au/v1/locations/schools?coordinate=" + document.getElementById("coords").value + "&api_key=" + keyDomain;
+                
+                $.getJSON(schools, function (domainData) {
+                    
+//                    console.log(domainData);
+                    
+                }); // close getJSON
+
+            }); // close getJSON
             
         }); // close getJSON
         
@@ -565,22 +681,20 @@ function getProfileData(locSuburb, locStateCode, locPC) {
 } // close getProfileData function
 
 
-// FUNCTION to load data from TROVE API
-//function getTroveData(currentLocation) {
+// FUNCTION to load data from Google Search API
+//function getGoogleData(locSuburb, locState, locPC){
 //    
-//    console.log("in get suburb data");
-//
-//    // my TROVE API key
-//    var keyTrove = "not5a0ah8ijuf2al";
-
-    // TROVE API call
-//    var urlTrove = "https://api.trove.nla.gov.au/v2/result?key=" + keyTrove + "&zone=all&q=" + locSuburb + " " + locState + " " + "suburb%20history";
-//    + "?units=auto&callback=?";
-//
-//        console.log(data);
-//
-//        var mySuburbNamesake = data.response.zone[1].records.people[0];
-//
+//    var keyGoogle = "AIzaSyCCy1xoop4IL-HQxJPMjuzMYt9Xf7SUg1E";  
+//    var searchId = "008379666768099928482:0rfqenjzl81";
+//    var urlGoogle = "https://www.googleapis.com/customsearch/v1?key=" + keyGoogle + "&cx=" + searchId + "&q=" + locSuburb + ",_" + locState + "%20" + locPC;
+//    
+//    console.log(urlGoogle);
+//    
+//    // make request to server using Google API call
+//    $.getJSON(urlGoogle, function (data) {
+//     
+////        console.log(data);
+//        
 //    }); // close getJSON
-
-//} // close getTroveData function
+//    
+//} // close getGoogleData function

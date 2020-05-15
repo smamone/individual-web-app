@@ -157,6 +157,11 @@ img{
     color: #00406C;
 }
 
+#suburb #mainSec .leftRow, #suburb #mainSec .rightRow{
+    float: left;
+    width: 45%;
+}
+
 #suburb .right #mainSec #current{
     font-size: 1.3em;
 }
@@ -276,6 +281,15 @@ img{
     text-transform: capitalize;
 }
 
+#nsBio{
+    list-style-position: outside;
+}
+
+#nsBio .list{
+    padding: 0.15em 0;
+    margin-left: 1.1em;
+}
+
 
 /** MAIN INFO **/
 #subMain{
@@ -351,18 +365,58 @@ th{
     padding: 0.8em 0.5em 0;
 }
 
+#subMain .table .row{
+    border-bottom: 0.1em solid #FFF;
+}
+
 #subMain .table .headTableRow{
     padding: 1.5em 1.5em 0;
 }
 
 #subMain .table .headTableRow th{
     padding-top: 0.75em;
+    width: auto;
+}
+
+#subMain .table .headTableRow th p{
+/*    border-bottom: 0.1em solid #999;*/
+    width: auto;
+    margin: 0 auto;
+    padding: 0 0.4em 0.2em;
 }
 
 #subMain .table .dataTableRow{
     padding: 1.5em 1.5em 0;
     font-size: 1.3em;
     color: #333;
+    font-weight: bold;
+}
+
+#subMain #subMainButton{
+    width: 100%;
+	min-height: 4.2em;
+    background-color: rgba(224, 224, 224, 0.9));
+    border-bottom: 0.1em solid #F0F0F0;
+	text-align: center;
+	position: relative;
+	display: inline-table;
+    cursor: pointer;
+    padding-bottom: 0;
+}
+
+#subMain #subMainButton tr{
+    background-color: rgba(0, 151, 254, 0.3);
+}
+
+#subMain #subMainTable{
+    width: 100%;
+    border-bottom: 0.1em solid #F0F0F0;
+    color: #FFF;
+    margin: 0 auto;
+    padding: 0.5em 0 2em;
+    background-color: rgba(224, 224, 224, 0.9);
+	display: none;
+	position: relative;
 }
 
 
@@ -470,7 +524,7 @@ th{
     
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (min-width: 0px) and (max-width: 1000px){
     
     /** HEADER **/
     #header{
@@ -486,8 +540,9 @@ th{
     }
     
     .container{
-        width: 100%;
+        width: 100vw;
         text-align: center;
+        overflow-x: hidden;
     }
     
     /** SUBURB DATA **/

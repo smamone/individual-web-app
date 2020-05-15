@@ -17,10 +17,12 @@
 
     <body>
         
+        <!-- PAGE 1 CONTENT -->
         <div id="page1">
             
             <div class="p1Container">
 
+                <!-- TITLE CONTENT -->
                 <div id="p1Title">
 
                     <div id="box">
@@ -32,6 +34,7 @@
                         <h3>Discover the origins and more of the suburbs of Canberra.</h3>
                     </div>
 
+                    <!-- CURRENT LOCATION -->
                     <div id="currentLoc">
 
                         <h3>Use your current location</h3>
@@ -42,11 +45,11 @@
 
                     </div> <!-- close CURRENTLOC -->
 
+                    
+                    <!-- SEARCH FORM -->
                     <div id="form">
 
                         <h3>Or search by suburb name,<br>state/territory and postcode</h3>
-
-<!--                        <form autocomplete="off">-->
 
                             <table class="p1Table" autocomplete="off">
 
@@ -86,59 +89,75 @@
                                 <input type="submit" id="submit" value="GO" />
                             </a>
 
-<!--                        </form>-->
-
                     </div> <!-- close FORM -->
 
                 </div> <!-- close TITLE -->
 
+                
+                <!-- IMAGE REFERENCE -->
                 <div class="widthContain">
                     <p id="imageref">Image by 
                         <a href="https://pixabay.com/photos/phoenix-hiking-arizona-desert-5135689/">trmsims15</a>, 2020
                     </p>
-                </div>
+                </div> <!-- close IMAGEREF -->
 
             </div> <!-- close CONTAINER -->
             
         </div> <!-- close PAGE 1-->
         
+        
+        <!-- PAGE 2 CONTENT -->
         <div id="page2">
             
+            <!-- HEADER -->
             <div id="header">
 
+                <!-- TITLE -->
                 <div id="title">
                     <h1>
                         <span class="raleway"><sup>Spotlight on </sup></span>
                         <span class="lora">Suburbia</span>
                         <span class="fas fa-search"></span>
                     </h1>
-                </div>
+                </div> <!-- close TITLE -->
 
+                <!-- HOME BUTTON -->
                 <div id="home">
                     <a href="index.html">
                         <p class="fas fa-home" alt="home"></p>
                     </a>
-                </div>
-
+                </div> <!-- close HOME BUTTON -->
 
             </div> <!-- close HEADER -->
 
             <div class="container">
 
+                <!-- SUBURB CONTENT -->
                 <div id="suburb">
 
+                    <!-- SUBURB IMAGE -->
                     <div class="image">
+                        
+                        <img src="images/unavailable.png" />
 
-                        <img />
+                    </div> <!-- close SUBURB IMAGE -->
 
-                    </div>
-
+                    <!-- SUBURB INFO -->
                     <div class="right">
 
                         <table id="mainSec" class="table">
 
                             <tr>
-                                <h3 id="current">You're currently in the suburb of</h3>
+                                <div class="leftRow">
+                                
+                                    <h3>You're currently in the suburb of</h3>
+                                </div>
+                                
+                                <div class="rightRow">
+                                    <h3>
+                                        <span class="fas fa-cloud-sun"></span> Current temp: <span id="temp">Not available</span>&deg;C
+                                    </h3>
+                                </div>
                             </tr>
 
                             <tr>
@@ -185,16 +204,19 @@
 
                         </table>
 
-                    </div>
+                    </div> <!-- close .RIGHT & SUBURB INFO -->
 
                 </div> <!-- close SUBURB -->
 
+                <!-- NAMESAKE CONTENT -->
                 <div id="namesakeSection">
 
+                    <!-- NAMESAKE IMAGE -->
                     <div class="image">
-                        <img src="" />
-                    </div>
+                        <img src="images/unavailable.png" />
+                    </div> <!-- close NAMESAKE IMAGE -->
 
+                    <!-- NAMESAKE INFO -->
                     <div class="right">
 
                         <table id="namesakeTable" class="table">
@@ -235,34 +257,38 @@
                                     <h3>Biography</h3>
                                 </td>
                                 <td>
-                                    <p id="nsBio" class="h2Ns">Not available</p>
+                                    <ul id="nsBio" class="h2Ns">Not available</ul>
                                 </td>
                             </tr>
 
-                        </table>
+                        </table> <!-- close NAMESAKE TABLE -->
 
-                    </div>
+                    </div> <!-- close .RIGHT & NAMESAKE INFO -->
 
                 </div> <!-- close NAMESAKE INFO -->
 
+                
+                <!-- SUBURB MAIN CONTENT -->
                 <div id="subMain">
 
+                    <!-- SUMMARY -->
                     <table class="table">
-
+                        
                         <tr class="suburb">
-                            <th>Summary of <span></span></th>
+                            <th>Summary of <span class="locName"></span></th>
                         </tr>
 
                         <tr class="summary">
                             <td id="summary">Not available</td>
                         </tr>
 
-                    </table>
+                    </table> <!-- close SUMMARY -->
 
+                    <!-- SECONDARY INFO -->
                     <table class="table">
 
                         <tr class="suburb">
-                            <th colspan="3">Origins of <span></span></th>
+                            <th colspan="3">Origins of <span class="locName"></span><span class="fas fa-chevron-down"></span></th>
                         </tr>
 
                         <tr class="picTableRow">
@@ -284,11 +310,11 @@
                         </tr>
 
                     </table>
-
+                    
                     <table class="table">
 
                         <tr class="suburb">
-                            <th colspan="3">Area details of <span></span></th>
+                            <th colspan="3">Area details of <span class="locName"></span> <span class="fas fa-chevron-down"></span></th>
                         </tr>
 
                         <tr class="picTableRow">
@@ -310,37 +336,131 @@
                         </tr>
 
                     </table>
-
+                    
                     <table class="table">
 
                         <tr class="suburb">
-                            <th colspan="3">Currently in <span></span></th>
+                            <th colspan="3">Demographics of <span></span> <span class="fas fa-chevron-down"></span></th>
                         </tr>
 
                         <tr class="picTableRow">
                             <td class="fas fa-users"></td>
-                            <td class="fas fa-cloud-sun"></td>
-                            <td class="fas fa-map-marked-alt"></td>
+                            <td class="fas fa-baby"></td>
+                            <td class="fas fa-user-friends"></td>
                         </tr>
 
                         <tr class="headTableRow">
-                            <th>Population</th>
-                            <th>Current temperature</th>
-                            <th>Other</th>
+                            <th>
+                                <p>Population</p>
+                            </th>
+                            <th>
+                                <p>Average age</p>
+                            </th>
+                            <th>
+                                <p>Percentage of families</p>
+                            </th>
                         </tr>
 
                         <tr class="dataTableRow">
                             <td id="population">Not available</td>
-                            <td id="currentTemp"><span>Not available</span>&deg;C</td>
-                            <td id="">Not available<span></span></td>
+                            <td id="age">Not available<span></span></td>
+                            <td id="fams">Not available<span></span></td>
+                        </tr>
+                        
+                    </table>
+
+                    <!-- SECONDARY BUTTON -->
+                    <table id="subMainButton" class="table">
+                        
+                        <tr class="suburb">
+                            <th colspan="3">Most common in <span class="locName"></span> <span class="fas fa-chevron-down"></span></th>
+                        </tr>
+                        
+                    </table> <!-- close SECONDARY BUTTON -->
+
+                    <table id="subMainTable" class="table">
+
+                        <tr class="picTableRow">
+                            <td class="fas fa-user-tie"></td>
+                            <td class="fas fa-user-clock"></td>
+                            <td class="fas fa-user-plus"></td>
+                        </tr>
+
+                        <tr class="headTableRow">
+                            <th>
+                                <p>Occupation</p>
+                            </th>
+                            <th>
+                                <p>Employment type</p>
+                            </th>
+                            <th>
+                                <p>Family composition</p>
+                            </th>
+                        </tr>
+
+                        <tr class="dataTableRow">
+                            <td id="occ">Not available</td>
+                            <td id="employ">Not available<span></span></td>
+                            <td id="famComp">Not available<span></span></td>
+                        </tr>
+
+                        <tr class="picTableRow">
+                            <td class="fas fa-globe"></td>
+                            <td class="fas fa-place-of-worship"></td>
+                            <td class="fas fa-user-graduate"></td>
+                        </tr>
+
+                        <tr class="headTableRow">
+                            <th>
+                                <p>Country of Birth</p>
+                            </th>
+                            <th>
+                                <p>Religion</p>
+                            </th>
+                            <th>
+                                <p>Education attendance</p>
+                            </th>
+                        </tr>
+
+                        <tr class="dataTableRow">
+                            <td id="country">Not available</td>
+                            <td id="religion">Not available<span></span></td>
+                            <td id="edu">Not available<span></span></td>
+                        </tr>
+
+                        <tr class="picTableRow">
+                            <td class="fas fa-car"></td>
+                            <td class="fas fa-ring"></td>
+                            <td class="fas fa-key"></td>
+                        </tr>
+
+                        <tr class="headTableRow">
+                            <th>
+                                <p>Method of transport</p>
+                            </th>
+                            <th>
+                                <p>Marital status</p>
+                            </th>
+                            <th>
+                                <p>Nature of occupancy</p>
+                            </th>
+                        </tr>
+
+                        <tr class="dataTableRow">
+                            <td id="transport">Not available</td>
+                            <td id="marital">Not available<span></span></td>
+                            <td id="occupancy">Not available<span></span></td>
                         </tr>
 
                     </table>
 
-                </div> <!-- close SUBMAIN -->
+                </div> <!-- close SUBMAIN & SECONDARY INFO -->
+                
 
+                <!-- TERTIARY INFO -->
                 <div id="subSec">
 
+                    <!-- TERTIARY BUTTON -->
                     <table id="subSecButton" class="table">
 
                         <tr class="secTableRow">
@@ -348,7 +468,7 @@
                             <th>Surrounding suburbs <span class="fas fa-chevron-down"></span></th>
                         </tr>
 
-                    </table>
+                    </table> <!-- close TERTIARY BUTTON -->
 
                     <table id="subSecInfo" class="table">
 
@@ -359,24 +479,26 @@
 
                     </table>
 
-                </div> <!-- close SUBSEC -->
-
+                </div> <!-- close SUBSEC & TERTIARY INFO -->
+                
+                
+                <!-- IMAGE REFERENCE -->
                 <div>
                     <p id="imageref">Image by 
                         <a href="https://pixabay.com/photos/phoenix-hiking-arizona-desert-5135689/">trmsims15</a>, 2020
                     </p>
-                </div>
+                </div> <!-- close IMAGE REF -->
 
             </div> <!-- close CONTAINER -->
             
-        </div> <!-- close PGE 2 -->
+        </div> <!-- close PAGE 2 -->
 
         
         <!-- SCRIPTS -->
         <script src="js/jquery-3.4.1.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/slider.js"></script>
-<!--        <script src="js/autocomplete.js"></script>-->
+        <script src="js/autocomplete.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         
     </body>
