@@ -95,7 +95,7 @@ function getLocation() {
             $("#location").append(locSuburb);
             $("#state").html(locState + " (" + locStateCode + ")");
             $("#postcode").html(locPC);
-            $(".suburb span").html(locSuburb);
+            $(".locName").html(locSuburb);
             $("#coords").html(defaultLocation);
 
             // call function to get suburb data from Wikipedia API
@@ -125,37 +125,9 @@ function loadFormData(locSuburb, locStateCode, locPC) {
     console.log(locPC);
     
     // declare locState based on locState value
-    if (locStateCode == "ACT"){
-        
-        var locState = "Australian Capital Territory";
-        
-    } else if (locStateCode == "NSW"){
-        
-        var locState = "New South Wales";
-        
-    } else if (locStateCode == "NT"){
-        
-        var locState = "Northern Territory";
-        
-    } else if (locStateCode == "QLD"){
-        
-        var locState = "Queensland";
-        
-    } else if (locStateCode == "SA"){
-        
-        var locState = "South Australia";
-        
-    } else if (locStateCode == "TAS"){
-        
-        var locState = "Tasmania";
-        
-    } else if (locStateCode == "WA"){
-        
-        var locState = "Western Australia";
-        
-    };
-    
-//    console.log(locState);
+    var locState = "Australian Capital Territory";
+            
+    $("#current").html("You're currently viewing the suburb of");
     
     // append location to data to page 2
     $("#location").append(locSuburb);
@@ -200,7 +172,7 @@ function getLocationName(latLongCoords) {
         $("#state").html(locState + " (" + locStateCode + ")");
 //        $("#district").append(locDistrict);
         $("#postcode").html(locPC);
-        $(".suburb span").html(locSuburb);
+        $(".locName").html(locSuburb);
         
         // call function to get suburb data from Wikipedia API
         getSuburbData(locSuburb, locState, locPC);
@@ -524,15 +496,11 @@ function getProfileData(locSuburb, locStateCode, locPC) {
                 // the data for one suburb
                 var surroundSubs = domainData.surroundingSuburbs[i];
 
-                // create new li for each suburb
-                var listTr = $("<tr class='secTableRow'>");
-
-                // to add to each list item
-                var listTd = $("<td class='surroundSubs'></td>");
+                // create new list item for each suburb
+                var list = $("<li class='surroundSubs'></li>");
                 
-                $("#subSecInfo").append(listTr);
-                listTr.append(listTd);
-                listTd.append(surroundSubs.name);
+                $("#surroundsInfo").append(list);
+                list.append(surroundSubs.name);
 
             } // close for loop
 
@@ -548,7 +516,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainOcc, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var avOcc = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -561,7 +529,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainEmploy, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var employ = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -574,7 +542,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainFamComp, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var famComp = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -587,7 +555,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainCountry, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var country = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -600,7 +568,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainReligion, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var religion = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -613,7 +581,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainEducation, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var edu = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -626,7 +594,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainTransport, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var transport = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -639,7 +607,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainMarital, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var marital = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -652,7 +620,7 @@ function getProfileData(locSuburb, locStateCode, locPC) {
             
             $.getJSON(domainOccupancy, function (domainData) {
 
-                console.log(domainData);
+//                console.log(domainData);
 
                 var occupancy = domainData.demographics[0].items[domainData.demographics[0].items.length-1].label;
                 
@@ -660,19 +628,19 @@ function getProfileData(locSuburb, locStateCode, locPC) {
                 
             });
     
-            $.getJSON(domainDemo, function (domainData) {
-
-//                console.log(domainData);
+//            $.getJSON(domainDemo, function (domainData) {
+//
+////                console.log(domainData);
+////                
+//                var schools = "https://api.domain.com.au/v1/locations/schools?coordinate=" + document.getElementById("coords").value + "&api_key=" + keyDomain;
 //                
-                var schools = "https://api.domain.com.au/v1/locations/schools?coordinate=" + document.getElementById("coords").value + "&api_key=" + keyDomain;
-                
-                $.getJSON(schools, function (domainData) {
-                    
-//                    console.log(domainData);
-                    
-                }); // close getJSON
-
-            }); // close getJSON
+//                $.getJSON(schools, function (domainData) {
+//                    
+////                    console.log(domainData);
+//                    
+//                }); // close getJSON
+//
+//            }); // close getJSON
             
         }); // close getJSON
         

@@ -58,7 +58,7 @@
                                         <label for="suburb">Suburb</label>
                                     </td>
                                     <td class="input autocomplete">
-                                        <input type="text" onkeyup="this.value = this.value.toUpperCase();" id="suburbField" name="suburb" placeholder="Begin typing..." required />
+                                        <input type="text" id="suburbField" name="suburb" placeholder="Begin typing..." required />
                                     </td>
                                 </tr>
 
@@ -68,7 +68,6 @@
                                     </td>
                                     <td class="input">
                                         <select id="stateField" name="state" required>
-                                    <option disabled selected value>Select</option>
                                     <option value="ACT">ACT</option>
                                         </select>
                                     </td>
@@ -149,14 +148,13 @@
 
                             <tr>
                                 <div class="leftRow">
-                                
-                                    <h3>You're currently in the suburb of</h3>
+                                    <h3>
+                                        Current temp <span class="fas fa-cloud-sun"></span> <span id="temp">Not available</span>&deg;C
+                                    </h3>
                                 </div>
                                 
                                 <div class="rightRow">
-                                    <h3>
-                                        <span class="fas fa-cloud-sun"></span> Current temp: <span id="temp">Not available</span>&deg;C
-                                    </h3>
+                                    <h3 class="current">You're currently in the suburb of</h3>
                                 </div>
                             </tr>
 
@@ -272,187 +270,215 @@
                 <div id="subMain">
 
                     <!-- SUMMARY -->
-                    <table class="table">
+                    <div class="table">
                         
-                        <tr class="suburb">
-                            <th>Summary of <span class="locName"></span></th>
-                        </tr>
+                        <div class="suburb">
+                            <h3>Summary</h3>
+                        </div>
 
-                        <tr class="summary">
-                            <td id="summary">Not available</td>
-                        </tr>
+                        <div class="summary">
+                            <p id="summary">Not available</p>
+                        </div>
 
-                    </table> <!-- close SUMMARY -->
+                    </div> <!-- close SUMMARY -->
 
                     <!-- SECONDARY INFO -->
-                    <table class="table">
 
-                        <tr class="suburb">
-                            <th colspan="3">Origins of <span class="locName"></span><span class="fas fa-chevron-down"></span></th>
-                        </tr>
+                    <!-- ORIGINS CONTENT -->
+                    <div id="originsButton" class="table button">
 
-                        <tr class="picTableRow">
-                            <td class="fas fa-birthday-cake"></td>
-                            <td class="fas fa-map-marked-alt"></td>
-                            <td class="fas fa-map-signs"></td>
-                        </tr>
-
-                        <tr class="headTableRow">
-                            <th>Established</th>
-                            <th>Coordinates</th>
-                            <th>Street Naming Theme</th>
-                        </tr>
-
-                        <tr class="dataTableRow">
-                            <td id="established">Not available</td>
-                            <td id="coords">Not available</td>
-                            <td id="streetNameTheme">Not available</td>
-                        </tr>
-
-                    </table>
+                        <div class="suburb">
+                            <h3>
+                                Origins &nbsp
+                                <span class="fas fa-chevron-down"></span>
+                            </h3>
+                        </div>
+                        
+                    </div>
                     
-                    <table class="table">
+                    <div id="originsTable" class="table">
+                        
+                        <div class="originsTableRow">
 
-                        <tr class="suburb">
-                            <th colspan="3">Area details of <span class="locName"></span> <span class="fas fa-chevron-down"></span></th>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-birthday-cake"></p>
+                                <h4 class="headTableRow">Established</h4>
+                                <p id="established" class="dataTableRow">Not available</p>
+                            </div>
 
-                        <tr class="picTableRow">
-                            <td class="fas fa-house-user"></td>
-                            <td class="fas fa-vote-yea"></td>
-                            <td class="fas fa-address-card"></td>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-map-marked-alt"></p>
+                                <h4 class="headTableRow">Coordinates</h4>
+                                <p id="coords" class="dataTableRow">Not available</p>
+                            </div>
 
-                        <tr class="headTableRow">
-                            <th>District</th>
-                            <th>Territory Electorate</th>
-                            <th>Federal Division</th>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-map-signs"></p>
+                                <h4 class="headTableRow">Street Naming Theme</h4>
+                                <p id="streetNameTheme" class="dataTableRow">Not available</p>
+                            </div>
+                            
+                        </div>
 
-                        <tr class="dataTableRow">
-                            <td id="">Not available</td>
-                            <td id="electorate">Not available</td>
-                            <td id="federal">Not available</td>
-                        </tr>
+                    </div> <!-- close ORIGINS CONTENT -->
 
-                    </table>
+                    <!-- AREA CONTENT -->
+                    <div id="areaButton" class="table button">
+
+                        <div class="suburb">
+                            <h3>
+                                Area details &nbsp
+                                <span class="fas fa-chevron-down"></span>
+                            </h3>
+                        </div>
+                        
+                    </div>
                     
-                    <table class="table">
-
-                        <tr class="suburb">
-                            <th colspan="3">Demographics of <span></span> <span class="fas fa-chevron-down"></span></th>
-                        </tr>
-
-                        <tr class="picTableRow">
-                            <td class="fas fa-users"></td>
-                            <td class="fas fa-baby"></td>
-                            <td class="fas fa-user-friends"></td>
-                        </tr>
-
-                        <tr class="headTableRow">
-                            <th>
-                                <p>Population</p>
-                            </th>
-                            <th>
-                                <p>Average age</p>
-                            </th>
-                            <th>
-                                <p>Percentage of families</p>
-                            </th>
-                        </tr>
-
-                        <tr class="dataTableRow">
-                            <td id="population">Not available</td>
-                            <td id="age">Not available<span></span></td>
-                            <td id="fams">Not available<span></span></td>
-                        </tr>
+                    <div id="areaTable" class="table">
                         
-                    </table>
+                        <div class="areaTableRow">
 
-                    <!-- SECONDARY BUTTON -->
-                    <table id="subMainButton" class="table">
+                            <div class="column">
+                                <p class="picTableRow fas fa-house-user"></p>
+                                <h4 class="headTableRow">District</h4>
+                                <p id="" class="dataTableRow">Not available</p>
+                            </div>
+
+                            <div class="column">
+                                <p class="picTableRow fas fa-vote-yea"></p>
+                                <h4 class="headTableRow">Territory Electorate</h4>
+                                <p id="electorate" class="dataTableRow">Not available</p>
+                            </div>
+
+                            <div class="column">
+                                <p class="picTableRow fas fa-address-card"></p>
+                                <h4 class="headTableRow">Federal Division</h4>
+                                <p id="federal" class="dataTableRow">Not available</p>
+                            </div>
+                            
+                        </div>
+
+                    </div> <!-- close AREA CONTENT -->
+
+                    <!-- DEMO CONTENT -->
+                    <div id="demoButton" class="table button">
+
+                        <div class="suburb">
+                            <h3>
+                                Demographics &nbsp
+                                <span class="fas fa-chevron-down"></span>
+                            </h3>
+                        </div>
                         
-                        <tr class="suburb">
-                            <th colspan="3">Most common in <span class="locName"></span> <span class="fas fa-chevron-down"></span></th>
-                        </tr>
+                    </div>
+                    
+                    <div id="demoTable" class="table">
                         
-                    </table> <!-- close SECONDARY BUTTON -->
+                        <div class="demoTableRow">
 
-                    <table id="subMainTable" class="table">
+                            <div class="column">
+                                <p class="picTableRow fas fa-users"></p>
+                                <h4 class="headTableRow">Population</h4>
+                                <p id="population" class="dataTableRow">Not available</p>
+                            </div>
 
-                        <tr class="picTableRow">
-                            <td class="fas fa-user-tie"></td>
-                            <td class="fas fa-user-clock"></td>
-                            <td class="fas fa-user-plus"></td>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-baby"></p>
+                                <h4 class="headTableRow">Average age</h4>
+                                <p id="age" class="dataTableRow">Not available<span></span></p>
+                            </div>
 
-                        <tr class="headTableRow">
-                            <th>
-                                <p>Occupation</p>
-                            </th>
-                            <th>
-                                <p>Employment type</p>
-                            </th>
-                            <th>
-                                <p>Family composition</p>
-                            </th>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-user-friends"></p>
+                                <h4 class="headTableRow">Percentage of families</h4>
+                                <p id="fams" class="dataTableRow">Not available<span></span></p>
+                            </div>
+                            
+                        </div>
+                        
+                    </div> <!-- close DEMO CONTENT -->
 
-                        <tr class="dataTableRow">
-                            <td id="occ">Not available</td>
-                            <td id="employ">Not available<span></span></td>
-                            <td id="famComp">Not available<span></span></td>
-                        </tr>
+                    <!-- COMMON CONTENT -->
+                    <div id="commonButton" class="table button">
+                        
+                        <div class="suburb">
+                            <h3>
+                                Most common &nbsp
+                                <span class="fas fa-chevron-down"></span>
+                            </h3>
+                        </div>
+                        
+                    </div>
 
-                        <tr class="picTableRow">
-                            <td class="fas fa-globe"></td>
-                            <td class="fas fa-place-of-worship"></td>
-                            <td class="fas fa-user-graduate"></td>
-                        </tr>
+                    <div id="commonTable" class="table">
+                        
+                        <div class="commonTableRow">
 
-                        <tr class="headTableRow">
-                            <th>
-                                <p>Country of Birth</p>
-                            </th>
-                            <th>
-                                <p>Religion</p>
-                            </th>
-                            <th>
-                                <p>Education attendance</p>
-                            </th>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-user-tie"></p>
+                                <h4 class="headTableRow">Occupation</h4>
+                                <p id="occ" class="dataTableRow">Not available</p>
+                            </div>
 
-                        <tr class="dataTableRow">
-                            <td id="country">Not available</td>
-                            <td id="religion">Not available<span></span></td>
-                            <td id="edu">Not available<span></span></td>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-user-clock"></p>
+                                <h4 class="headTableRow">Employment type</h4>
+                                <p id="employ" class="dataTableRow">Not available<span></span></p>
+                            </div>
 
-                        <tr class="picTableRow">
-                            <td class="fas fa-car"></td>
-                            <td class="fas fa-ring"></td>
-                            <td class="fas fa-key"></td>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-user-plus"></p>
+                                <h4 class="headTableRow">Family composition</h4>
+                                <p id="famComp" class="dataTableRow">Not available<span></span></p>
+                            </div>
+                            
+                        </div>
+                            
+                        <div class="commonTableRow">
 
-                        <tr class="headTableRow">
-                            <th>
-                                <p>Method of transport</p>
-                            </th>
-                            <th>
-                                <p>Marital status</p>
-                            </th>
-                            <th>
-                                <p>Nature of occupancy</p>
-                            </th>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-globe"></p>
+                                <h4 class="headTableRow">Country of Birth</h4>
+                                <p id="country" class="dataTableRow">Not available</p>
+                            </div>
 
-                        <tr class="dataTableRow">
-                            <td id="transport">Not available</td>
-                            <td id="marital">Not available<span></span></td>
-                            <td id="occupancy">Not available<span></span></td>
-                        </tr>
+                            <div class="column">
+                                <p class="picTableRow fas fa-place-of-worship"></p>
+                                <h4 class="headTableRow">Religion</h4>
+                                <p id="religion" class="dataTableRow">Not available<span></span></p>
+                            </div>
 
-                    </table>
+                            <div class="column">
+                                <p class="picTableRow fas fa-user-graduate"></p>
+                                <h4 class="headTableRow">Education attendance</h4>
+                                <p id="edu" class="dataTableRow">Not available<span></span></p>
+                            </div>
+
+                        </div>
+                        
+                        <div class="commonTableRow">
+                            
+                            <div class="column">
+                                <p class="picTableRow fas fa-car"></p>
+                                <h4 class="headTableRow">Method of transport</h4>
+                                <p id="transport" class="dataTableRow">Not available</p>
+                            </div>
+
+                            <div class="column">
+                                <p class="picTableRow fas fa-ring"></p>
+                                <h4 class="headTableRow">Marital status</h4>
+                                <p id="marital" class="dataTableRow">Not available<span></span></p>
+                            </div>
+
+                            <div class="column">
+                                <p class="picTableRow fas fa-key"></p>
+                                <h4 class="headTableRow">Nature of occupancy</h4>
+                                <p id="occupancy" class="dataTableRow">Not available<span></span></p>
+                            </div>
+
+                        </div>
+                    
+                    </div> <!-- close COMMON CONTENT -->
 
                 </div> <!-- close SUBMAIN & SECONDARY INFO -->
                 
@@ -461,23 +487,37 @@
                 <div id="subSec">
 
                     <!-- TERTIARY BUTTON -->
-                    <table id="subSecButton" class="table">
+                    <div id="streetsButton" class="table">
 
-                        <tr class="secTableRow">
-                            <th>Street Names</th>
-                            <th>Surrounding suburbs <span class="fas fa-chevron-down"></span></th>
-                        </tr>
+                        <div class="secTableRow">
+                            <h4>
+                                Street Names &nbsp
+                                <span class="fas fa-chevron-down"></span>
+                            </h4>
+                        </div>
+                        
+                    </div>
 
-                    </table> <!-- close TERTIARY BUTTON -->
+                    <div id="streetsInfo" class="table">
+                    </div>
+                    
+                    <div id="surroundsButton" class="table">
+                        
+                        <div class="secTableRow">
+                            <h4>
+                                Surrounding suburbs &nbsp
+                                <span class="fas fa-chevron-down"></span>
+                            </h4>
+                        </div>
 
-                    <table id="subSecInfo" class="table">
+                    </div> <!-- close TERTIARY BUTTON -->
 
-                        <!--<tr class="secTableRow">
-                            <td class="streetNames">street names</td>
-                            <td class="surroundSubs"></td>
-                        </tr>-->
-
-                    </table>
+                    <div id="surroundsInfo" class="table">
+                        
+                        <ul>
+                        </ul>
+                        
+                    </div>
 
                 </div> <!-- close SUBSEC & TERTIARY INFO -->
                 
