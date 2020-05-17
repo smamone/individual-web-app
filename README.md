@@ -1,5 +1,7 @@
 # Spotlight on Suburbia
 ## 11060 Interactive Project
+## Production Journal
+##### Stefanie Mamone u3027318
 
 ### INDIVIDUAL WEB APPLICATION
 Link: https://smamone.github.io/individual-web-app
