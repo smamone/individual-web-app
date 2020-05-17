@@ -6,7 +6,7 @@
 ### INDIVIDUAL WEB APPLICATION
 Link: https://smamone.github.io/individual-web-app
 
-#### Research
+#### RESEARCH
 I began this project by researching the data available within the GLAM APIs. Trove had a vast range of data from various sources. In my Trove search, I came across the Origins and meanings of Canberra's suburbs and street names, however the API proved to be a broken link. Determined to proceed with this intriguing idea, it led me on a search to find similar data available through APIs that would help me see through this idea.
 
 On my search, I discovered there were many databases that provided the information I was looking for. The volume and format of the data returned from the APIs presented many challenges; determining the correct data fields for search queries, navigating to the required nested data, making several calls to the same APIs to access required data, and accessing data embedded in html. These issues had follow-on affects, such as determining a default location in the event of errors, and determining how to best access datasets for 100+ suburbs of Canberra which could be problematic as they may not all present consistently. Each API also only provided a small amount of data required. In addition, there was difficulty in tailoring API requests to return reliable and accurate data across multiple categories and suburbs; this, at times, resulted in multiple requests to APIs with limited daily requests.
@@ -16,17 +16,18 @@ During my API research, I also came across several websites that had similar pur
 ![Research](/images/journal/research.png)
 
 
-#### Sketches
+#### SKETCHES
 
 ![Sketches](/images/journal/sketches.png)
 
 
-#### Wireframes
+#### WIREFRAMES
 
 ![Wireframes](/images/journal/wireframes.png)
 
+I made several adjustments to layout and content from the sketches and wireframes to the final product to ensure an interactive project that would present the data in the most effective way. I added a "home" page, allowing the user to decide if they want to view data by their current location or search for another suburb in Canberra. This added further interaction and then takes the user to the data results "page". I also adjusted the layouts for each screen size to fit the content in the most effective way for user consumption; I added sliders to show and hide content as the user desires to avoid being overwhelmed by information, widened sections to make content fit the page more comfortably, and added icons to further demonstrate the meaning of data whilst providing more interest.
 
-#### Reflection
+#### REFLECTION
 I have created a novel web application using data from several GLAM APIs, including:
 
 __ACTmapi API__
