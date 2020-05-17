@@ -76,7 +76,7 @@ function getLocation() {
             // display error
             console.log(err);
             
-            $("#current").html("You're currently viewing the suburb of");
+            $(".current").html("You're currently viewing the suburb of");
 
             // default location is Canberra lat long
             var defaultLocation = "-35.3156,149.1442";
@@ -125,7 +125,7 @@ function loadFormData(locSuburb, locStateCode, locPC) {
     // declare locState based on locState value
     var locState = "Australian Capital Territory";
             
-    $("#current").html("You're currently viewing the suburb of");
+    $(".current").html("You're currently viewing the suburb of");
     
     // append location to data to page 2
     $("#location").append(locSuburb);
