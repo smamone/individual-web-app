@@ -71,7 +71,7 @@ I would have liked to be able to add the following features to my website to fur
 * Electoral data (territory electorate and federal division)
 * Map of location
 
-And although the data is included within the summary, I would have preferred to be able to display the year of establishment and street naming theme for each suburb separately inside the data categories.
+And although the data is included within the summary, I would have preferred to be able to display the year of establishment and street naming theme for each suburb separately inside the data categories. Further down the track, I would be interested in including data from all states/territories within Australia.
 
 Overall, I developed a comprehensive concept of diverse data, combining historical information with data reflecting the current profile of the suburb.
 
