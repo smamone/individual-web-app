@@ -5,8 +5,8 @@
         <title>Spotlight on Suburbia</title>
 
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/suburb.css" />
+        <link rel="stylesheet" type="text/css" href="css/page1.css" />
+        <link rel="stylesheet" type="text/css" href="css/page2.css" />
         <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Lora">
         <link rel="stylesheet"
@@ -20,6 +20,7 @@
         <!-- PAGE 1 CONTENT -->
         <div id="page1">
             
+            <!-- CONTAINER -->
             <div class="p1Container">
 
                 <!-- TITLE CONTENT -->
@@ -43,8 +44,8 @@
                             <a id="currentButton" class="button">GO</a>
                         </p>                    
 
-                    </div> <!-- close CURRENTLOC -->
-
+                    </div>
+                    <!-- close CURRENTLOC -->
                     
                     <!-- SEARCH FORM -->
                     <div id="form">
@@ -88,25 +89,36 @@
                                 <input type="submit" id="submit" value="GO" />
                             </a>
 
-                    </div> <!-- close FORM -->
+                    </div>
+                    <!-- close FORM -->
 
-                </div> <!-- close TITLE -->
+                </div>
+                <!-- close TITLE CONTENT -->
 
                 
-                <!-- IMAGE REFERENCE -->
+                <!-- REQ -->
                 <div class="widthContain">
-                    <p id="imageref">Image by 
+                    <p id="req">Produced in the Faculty of Arts and Design, University of Canberra, 2020.</p>
+                    
+                    <!-- IMAGE REFERENCE -->
+                    <p id="imagerefP1">Image by 
                         <a href="https://pixabay.com/photos/phoenix-hiking-arizona-desert-5135689/">trmsims15</a>, 2020
                     </p>
-                </div> <!-- close IMAGEREF -->
+                </div>
+                <!-- close REQ -->
 
-            </div> <!-- close CONTAINER -->
+            </div>
+            <!-- close CONTAINER -->
             
-        </div> <!-- close PAGE 1-->
+        </div>
+        <!-- close PAGE 1-->
         
         
         <!-- PAGE 2 CONTENT -->
         <div id="page2">
+            
+            <!-- SCROLL TO TOP BUTTON -->
+            <a href="#" id="top" class="fas fa-chevron-circle-up" alt="Top of page"></a>
             
             <!-- HEADER -->
             <div id="header">
@@ -118,17 +130,21 @@
                         <span class="lora">Suburbia</span>
                         <span class="fas fa-search"></span>
                     </h1>
-                </div> <!-- close TITLE -->
+                </div>
+                <!-- close TITLE -->
 
                 <!-- HOME BUTTON -->
                 <div id="home">
                     <a href="index.html">
                         <p class="fas fa-home" alt="home"></p>
                     </a>
-                </div> <!-- close HOME BUTTON -->
+                </div>
+                <!-- close HOME BUTTON -->
 
-            </div> <!-- close HEADER -->
+            </div>
+            <!-- close HEADER -->
 
+            <!-- CONTAINER -->
             <div class="container">
 
                 <!-- SUBURB CONTENT -->
@@ -139,11 +155,13 @@
                         
                         <img src="images/unavailable.png" />
 
-                    </div> <!-- close SUBURB IMAGE -->
+                    </div>
+                    <!-- close SUBURB IMAGE -->
 
                     <!-- SUBURB INFO -->
                     <div class="right">
 
+                        <!-- MAIN SEC TABLE -->
                         <table id="mainSec" class="table">
 
                             <tr>
@@ -162,15 +180,6 @@
                                 <h1 id="location">
                                     <span class="fas fa-map-marker-alt"></span>&nbsp 
                                 </h1>
-                            </tr>
-
-                            <tr>
-                                <td class="leftTd">
-                                    <h3>District</h3>
-                                </td>
-                                <td>
-                                    <h2 id="district" class="h2Main">Not available</h2>
-                                </td>
                             </tr>
 
                             <tr>
@@ -202,9 +211,11 @@
 
                         </table>
 
-                    </div> <!-- close .RIGHT & SUBURB INFO -->
+                    </div>
+                    <!-- close SUBURB INFO -->
 
-                </div> <!-- close SUBURB -->
+                </div>
+                <!-- close SUBURB CONTENT -->
 
                 <!-- NAMESAKE CONTENT -->
                 <div id="namesakeSection">
@@ -212,11 +223,13 @@
                     <!-- NAMESAKE IMAGE -->
                     <div class="image">
                         <img src="images/unavailable.png" />
-                    </div> <!-- close NAMESAKE IMAGE -->
+                    </div>
+                    <!-- close NAMESAKE IMAGE -->
 
                     <!-- NAMESAKE INFO -->
                     <div class="right">
 
+                        <!-- NAMESAKE TABLE -->
                         <table id="namesakeTable" class="table">
 
                             <tr>
@@ -259,11 +272,14 @@
                                 </td>
                             </tr>
 
-                        </table> <!-- close NAMESAKE TABLE -->
+                        </table>
+                        <!-- close NAMESAKE TABLE -->
 
-                    </div> <!-- close .RIGHT & NAMESAKE INFO -->
+                    </div>
+                    <!-- close NAMESAKE INFO -->
 
-                </div> <!-- close NAMESAKE INFO -->
+                </div>
+                <!-- close NAMESAKE CONTENT -->
 
                 
                 <!-- SUBURB MAIN CONTENT -->
@@ -280,30 +296,33 @@
                             <p id="summary">Not available</p>
                         </div>
 
-                    </div> <!-- close SUMMARY -->
+                    </div>
+                    <!-- close SUMMARY -->
 
-                    <!-- SECONDARY INFO -->
-
-                    <!-- ORIGINS CONTENT -->
-                    <div id="originsButton" class="table button">
+                    <!-- DETAILS CONTENT -->
+                    <!-- DETAILS BUTTON -->
+                    <div id="detailsButton" class="table button">
 
                         <div class="suburb">
                             <h3>
-                                Origins &nbsp
+                                Details &nbsp
                                 <span class="fas fa-chevron-down"></span>
                             </h3>
                         </div>
                         
                     </div>
+                    <!-- DETAILS BUTTON -->
                     
-                    <div id="originsTable" class="table">
+                    <!-- DETAILS TABLE -->
+                    <div id="detailsTable" class="table">
                         
-                        <div class="originsTableRow">
+                        <!-- DETAILS TABLE ROW -->
+                        <div class="detailsTableRow">
 
                             <div class="column">
-                                <p class="picTableRow fas fa-birthday-cake"></p>
-                                <h4 class="headTableRow">Established</h4>
-                                <p id="established" class="dataTableRow">Not available</p>
+                                <p class="picTableRow fas fa-house-user"></p>
+                                <h4 class="headTableRow">District</h4>
+                                <p id="district" class="dataTableRow">Not available</p>
                             </div>
 
                             <div class="column">
@@ -313,54 +332,19 @@
                             </div>
 
                             <div class="column">
-                                <p class="picTableRow fas fa-map-signs"></p>
-                                <h4 class="headTableRow">Street Naming Theme</h4>
-                                <p id="streetNameTheme" class="dataTableRow">Not available</p>
+                                <p class="picTableRow fas fa-search-dollar"></p>
+                                <h4 class="headTableRow">Median house price</h4>
+                                <p id="price" class="dataTableRow">Not available</p>
                             </div>
                             
                         </div>
+                        <!-- close DETAILS TABLE ROW -->
 
-                    </div> <!-- close ORIGINS CONTENT -->
-
-                    <!-- AREA CONTENT -->
-                    <div id="areaButton" class="table button">
-
-                        <div class="suburb">
-                            <h3>
-                                Area details &nbsp
-                                <span class="fas fa-chevron-down"></span>
-                            </h3>
-                        </div>
-                        
                     </div>
-                    
-                    <div id="areaTable" class="table">
-                        
-                        <div class="areaTableRow">
-
-                            <div class="column">
-                                <p class="picTableRow fas fa-house-user"></p>
-                                <h4 class="headTableRow">District</h4>
-                                <p id="" class="dataTableRow">Not available</p>
-                            </div>
-
-                            <div class="column">
-                                <p class="picTableRow fas fa-vote-yea"></p>
-                                <h4 class="headTableRow">Territory Electorate</h4>
-                                <p id="electorate" class="dataTableRow">Not available</p>
-                            </div>
-
-                            <div class="column">
-                                <p class="picTableRow fas fa-address-card"></p>
-                                <h4 class="headTableRow">Federal Division</h4>
-                                <p id="federal" class="dataTableRow">Not available</p>
-                            </div>
-                            
-                        </div>
-
-                    </div> <!-- close AREA CONTENT -->
+                    <!-- close DETAILS TABLE -->
 
                     <!-- DEMO CONTENT -->
+                    <!-- DEMO BUTTON -->
                     <div id="demoButton" class="table button">
 
                         <div class="suburb">
@@ -371,7 +355,9 @@
                         </div>
                         
                     </div>
+                    <!-- close DEMO BUTTON -->
                     
+                    <!-- DEMO TABLE -->
                     <div id="demoTable" class="table">
                         
                         <div class="demoTableRow">
@@ -395,10 +381,13 @@
                             </div>
                             
                         </div>
+                        <!-- close DEMO TABLE ROW -->
                         
-                    </div> <!-- close DEMO CONTENT -->
+                    </div>
+                    <!-- close DEMO TABLE -->
 
                     <!-- COMMON CONTENT -->
+                    <!-- COMMON BUTTON -->
                     <div id="commonButton" class="table button">
                         
                         <div class="suburb">
@@ -409,7 +398,9 @@
                         </div>
                         
                     </div>
+                    <!-- close COMMON BUTTON -->
 
+                    <!-- COMMON TABLE -->
                     <div id="commonTable" class="table">
                         
                         <div class="commonTableRow">
@@ -433,6 +424,7 @@
                             </div>
                             
                         </div>
+                        <!-- close COMMON TABLE ROW -->
                             
                         <div class="commonTableRow">
 
@@ -455,6 +447,7 @@
                             </div>
 
                         </div>
+                        <!-- close COMMON TABLE ROW -->
                         
                         <div class="commonTableRow">
                             
@@ -477,29 +470,38 @@
                             </div>
 
                         </div>
+                        <!-- close COMMON TABLE ROW -->
                     
-                    </div> <!-- close COMMON CONTENT -->
+                    </div>
+                    <!-- close COMMON TABLE -->
 
-                </div> <!-- close SUBMAIN & SECONDARY INFO -->
+                </div>
+                <!-- close SUBMAIN -->
                 
 
-                <!-- TERTIARY INFO -->
+                <!-- SUBSEC INFO -->
                 <div id="subSec">
 
-                    <!-- TERTIARY BUTTON -->
+                    <!-- STREETS BUTTON -->
                     <div id="streetsButton" class="table">
 
                         <div class="secTableRow">
                             <h4>
-                                Street Names &nbsp
+                                Surrounding Schools &nbsp
                                 <span class="fas fa-chevron-down"></span>
                             </h4>
                         </div>
                         
                     </div>
+                    <!-- close STREETS BUTTON -->
 
                     <div id="streetsInfo" class="table">
+                        
+                        <ul>
+                        </ul>
+                        
                     </div>
+                    <!-- close STREETS INFO -->
                     
                     <div id="surroundsButton" class="table">
                         
@@ -510,7 +512,8 @@
                             </h4>
                         </div>
 
-                    </div> <!-- close TERTIARY BUTTON -->
+                    </div>
+                    <!-- close SURROUNDS BUTTON -->
 
                     <div id="surroundsInfo" class="table">
                         
@@ -518,27 +521,55 @@
                         </ul>
                         
                     </div>
+                    <!-- close SURROUNDS INFO -->
 
-                </div> <!-- close SUBSEC & TERTIARY INFO -->
-                
-                
-                <!-- IMAGE REFERENCE -->
-                <div>
-                    <p id="imageref">Image by 
-                        <a href="https://pixabay.com/photos/phoenix-hiking-arizona-desert-5135689/">trmsims15</a>, 2020
-                    </p>
-                </div> <!-- close IMAGE REF -->
+                </div>
+                <!-- close SUBSEC INFO -->
+        
+        
+                <!-- FOOTER -->
+                <footer>
 
-            </div> <!-- close CONTAINER -->
+                    <div>
+                        <p>Powered by</p>
+
+                        <a href="https://developer.domain.com.au">
+                            <img src="images/api/domain_white.png" width="110px" alt="Domain API" />
+                        </a>
+                        <a href="http://actmapi.act.gov.au">
+                            <img src="images/api/actmapi_white.png" width="110px" alt="ACTmapi API" />
+                        </a>
+                        <a href="https://www.mediawiki.org/wiki/API:Main_page">
+                            <img src="images/api/wikipedia_white.png" width="45px" alt="Wikipedia API" />
+                        </a>
+                        <a href="https://darksky.net/dev">
+                            <img src="images/api/darksky_white.png" width="110px" alt="Dark Sky API" />
+                        </a>
+                        <a href="https://opencagedata.com/api">
+                            <img src="images/api/opencage_grey.png" width="110px" alt="OpenCage API" />
+                        </a>
+                        
+                        <p id="imagerefP2">Image by 
+                            <a href="https://pixabay.com/photos/phoenix-hiking-arizona-desert-5135689/">trmsims15</a>, 2020
+                        </p>
+                    </div>
+
+                </footer>
+                <!-- close FOOTER -->
+
+            </div>
+            <!-- close CONTAINER -->
             
-        </div> <!-- close PAGE 2 -->
+        </div>
+        <!-- close PAGE 2 -->
 
         
         <!-- SCRIPTS -->
         <script src="js/jquery-3.4.1.js"></script>
+        <script src="js/autocomplete.js"></script>
+        <script src="js/scrollbutton.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/slider.js"></script>
-        <script src="js/autocomplete.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         
     </body>

@@ -1,5 +1,5 @@
 /** CSS styles **/
-/* index.html */
+/* PAGE 1 STYLES */
 
 *{
     padding: 0;
@@ -203,13 +203,14 @@ img{
     color: #FFF;
     background-color: #4481eb;
     border: 0.1em solid #FFF;
-    border-radius: 0.4em;
+    border-radius: 5em;
     font-size: 0.9em;
     font-weight: bold;
     cursor: pointer;
 }
 
-#currentLoc p:hover, .button #submit:hover{
+#currentLoc p:hover,
+.button #submit:hover{
     background-color: #00406C;
 }
 
@@ -248,17 +249,27 @@ img{
 
 .widthContain{
     width: 60%;
+    background-color: #333;
     margin: 0 auto;
 }
 
-#imageref{
+#req{
+    font-size: 0.9em;
+    text-align: left;
+    color: #FFF;
+    padding: 1em 0;
+    float: left;
+}
+
+#imagerefP1{
     font-size: 0.9em;
     text-align: right;
     color: #FFF;
     padding: 1em 0;
+    float: right;
 }
 
-#imageref a{
+#imagerefP1 a{
     color: #FFF;
 }
 
@@ -286,6 +297,7 @@ img{
         width: 50%;
         padding: 1em 0 2em;
         background-color: rgba(224, 224, 224, 0.95);
+        border-radius: 2em;
     }
 
 
@@ -294,6 +306,7 @@ img{
         width: 50%;
         padding: 1em 0 2em;
         background-color: rgba(224, 224, 224, 0.95);
+        border-radius: 2em;
     }
 
     p1Table{
@@ -352,8 +365,17 @@ img{
         font-weight: bold;
         cursor: pointer;
     }
+
+    #req{
+        width: 100%;
+        text-align: center;
+        color: #FFF;
+        padding: 0 0 0.5em;
+        float: none;
+    }   
     
-    #imageref{
+    #imagerefP1{
+        width: 100%;
         text-align: center;
         padding: 0.5em 0;
     }
@@ -386,6 +408,7 @@ img{
         width: 70%;
         padding: 1em 0 2em;
         background-color: rgba(224, 224, 224, 0.95);
+        border-radius: 2em;
     }
 
 
@@ -394,6 +417,7 @@ img{
         width: 70%;
         padding: 1em 0 2em;
         background-color: rgba(224, 224, 224, 0.95);
+        border-radius: 2em;
     }
 
     .p1Table{
@@ -456,8 +480,17 @@ img{
         font-weight: bold;
         cursor: pointer;
     }
+
+    #req{
+        width: 100%;
+        text-align: center;
+        color: #FFF;
+        padding: 0 0 0.5em;
+        float: none;
+    }   
     
-    #imageref{
+    #imagerefP1{
+        width: 100%;
         text-align: center;
         padding: 0.5em 0;
     }
@@ -490,6 +523,7 @@ img{
         width: 80%;
         padding: 1em 0 2em;
         background-color: rgba(224, 224, 224, 0.95);
+        border-radius: 2em;
     }
 
 
@@ -498,6 +532,7 @@ img{
         width: 80%;
         padding: 1em 0 2em;
         background-color: rgba(224, 224, 224, 0.95);
+        border-radius: 2em;
     }
 
     .p1Table{
@@ -560,8 +595,17 @@ img{
         font-weight: bold;
         cursor: pointer;
     }
+
+    #req{
+        width: 100%;
+        text-align: center;
+        color: #FFF;
+        padding: 0 0 0.5em;
+        float: none;
+    }   
     
-    #imageref{
+    #imagerefP1{
+        width: 100%;
         text-align: center;
         padding: 0.5em 0;
     }
