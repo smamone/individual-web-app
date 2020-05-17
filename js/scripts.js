@@ -273,8 +273,7 @@ function getPlaceData(locSuburb){
         var bioString = placeData[placeData.length-1].replace("Biography: ","");
         
         // split bioString and store as array
-        var bioSplit = bioString.split("; ");
-        var bio = bioSplit.value.charAt(0).toUpperCase() + bioSplit.slice(1).toLowerCase();
+        var bio = bioString.split("; ");
         
 //        console.log(bio);
         
