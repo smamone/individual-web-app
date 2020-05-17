@@ -83,6 +83,7 @@ tmsims15. (2020). *Phoenix, Hiking, Arizona, Desert*. Retrieved from: https://pi
 ### GROUP WEBSITE
 ##### AmalGLAMation
 Link: https://smamone.github.io/11060-interactive-project
+GitHub repository: https://github.com/smamone/11060-interactive-project
 
 My allocated role in the group was the set up and provision of access to group members of the GitHub repository, as well as the url set up for the group website. I requested this role as I had only used GitHub once before in the unit’s previous assessment, therefore I felt there was more for me to learn by taking on this role.
 
