@@ -34,7 +34,7 @@ __Domain API__
 * District
 * Region
 * Population
-* Origin
+* Details
 * Demographic
 * Most common
 * Surrounding suburbs
