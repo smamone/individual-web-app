@@ -249,7 +249,6 @@ img{
 
 .widthContain{
     width: 60%;
-    background-color: #333;
     margin: 0 auto;
 }
 
@@ -497,7 +496,7 @@ img{
     
 }
 
-@media screen and (min-width: 660px){
+@media screen and (min-width: 0px) and (max-width: 660px){
     
     /** TITLE **/
     #p1Title{

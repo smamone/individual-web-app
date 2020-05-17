@@ -438,7 +438,7 @@ function getProfileData(locSuburb, locStateCode, locPC, currentLocation) {
         $.getJSON(urlDomain, function (domainData) {
         
             console.log("loading Domain data");
-            console.log(domainData);
+//            console.log(domainData);
 
             var districtData = domainData.areaName;
             var regionData = domainData.regionName;

@@ -437,7 +437,9 @@ footer img:hover{
 }
 
 #subMain .summary #summary{
-    padding: 2em 2em 0;
+    text-align: left;
+    column-gap: 4em;
+    padding: 2em 3em 0;
 }
 
 #subMain .detailsTableRow,
@@ -686,13 +688,17 @@ footer img:hover{
         width: 100%;
     }
     
+    #subMain .summary #summary{
+        padding: 2em 3em 0;
+    }
+    
     #subMain #commonTable{
         margin-bottom: 0.5em;
     }
     
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 0px) and (max-width: 1000px){
     
     footer{
         border-radius: 0;
@@ -950,7 +956,7 @@ footer img:hover{
     }
 
     #subMain .summary #summary{
-        padding: 1em 2em 0;
+        padding: 1em 3em 0;
     }
     
     #subMain .table .column{
